@@ -1,0 +1,12 @@
+{
+  "name": "my-doctor-app",
+  "version": "1.0.0",
+  "description": "This is an application where patient can book an appointment with a doctor",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app"
+  },
+  "author": "Rajnish Patel",
+  "license": "ISC"
+}
