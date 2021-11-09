@@ -27,13 +27,13 @@ app.use(cors());
 
 // app.use(require("./router/routes"));
 
-app.get("/", (req, res) => {
-  res.send("Hello From the Home side");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello From the Home side");
+// });
 
-app.get("/login", (req, res) => {
-  res.send("Hello from the login side");
-});
+// app.get("/login", (req, res) => {
+//   res.send("Hello from the login side");
+// });
 //for production
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/dist"));
