@@ -1,0 +1,27 @@
+<form method="post">
+    <div class="container">
+        <h1>Login</h1>
+        <p>Please fill in this form to Login</p>
+        <hr />
+
+        <label for="email"><i class="fa fa-envelope"></i> <strong>Email</strong></label>
+        <input type="email" v-model="email" placeholder="Enter Your Email" id="email" required />
+        <label for="password"><i class="fa fa-key"></i><strong>Password</strong></label>
+
+        <input type="password" v-model="password" placeholder="Enter Password" id="password" required />
+
+        <label for="role"><i class="fa fa-universal-access"></i><strong>Role</strong></label>
+        <select v-model="role" required>
+            <option value="" disabled selected>Select your Role</option>
+            <option value="patient">Patient</option>
+            <option value="doctor">Doctor</option>
+            <option value="admin">Admin</option>
+        </select>
+        <hr />
+
+        <button type="submit" class="loginbtn">
+            Login
+        </button>
+
+    </div>
+</form>
