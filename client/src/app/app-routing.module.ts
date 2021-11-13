@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
+import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
 const routes: Routes = [
   // routing for the common login page 
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
    path:'admin/doctor-registration',
    component:DoctorRegistrationComponent,
+  },
+   // routing for the patient appointment booking by admin 
+  {
+   path:'admin/patient-registration',
+   component:PatientRegistrationComponent,
   },
 ];
 

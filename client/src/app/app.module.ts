@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule,RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
+import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
 
 
 
@@ -14,6 +15,7 @@ import { DoctorRegistrationComponent } from './components/admin/doctor-registrat
     AppComponent,
     RoutingComponents,
     DoctorRegistrationComponent,
+    PatientRegistrationComponent,
     
     
     
