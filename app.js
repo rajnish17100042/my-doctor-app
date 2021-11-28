@@ -1,6 +1,8 @@
 // include express module in our app
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
+const passport = require("passport");
 // new create the express server
 const app = express();
 
@@ -31,9 +33,10 @@ app.use(cors());
 //   res.send("Hello From the Home side");
 // });
 
-// app.get("/login", (req, res) => {
-//   res.send("Hello from the login side");
+// app.get("/", (req, res) => {
+//   res.send("Hello from the home side");
 // });
+
 //for production
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/dist"));

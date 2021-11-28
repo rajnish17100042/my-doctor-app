@@ -12,4 +12,8 @@ export class DoctorRegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  displayMessage(){
+  alert("hello");
+}
+
 }
