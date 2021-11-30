@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
-// import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,9 +10,11 @@ export class AuthService {
   user:any;
   constructor(private http:HttpClient) { }
 
-  // registerAdmin(adminUser){
-  //   let headers=new HttpHeaders();
-  //   headers.append('Content-Type','application/json');
-  //   return this.http.post('http://localhost:5000/admin/adminRegistration',adminUser,{headers:headers}).map(res=>res.json()); 
-  // }
+  sendAdminData(adminData){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    return this.http.post<any>('/admin/adminRegistration',adminData,{headers:headers})
+
+  }
+
 }

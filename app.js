@@ -10,7 +10,7 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-// dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "./config.env" });
 // require("./db/conn");
 const port = process.env.PORT || 5000;
 
@@ -27,7 +27,7 @@ app.use(cors());
 
 //using middleware to use the route we created
 
-// app.use(require("./router/routes"));
+app.use(require("./router/routes"));
 
 // app.get("/", (req, res) => {
 //   res.send("Hello From the Home side");

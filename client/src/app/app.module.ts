@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule,RoutingComponents } from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
 import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
@@ -28,6 +29,7 @@ import { FlashMessagesModule } from 'flash-messages-angular';
     AppRoutingModule,
     FormsModule,
     FlashMessagesModule.forRoot(),
+    HttpClientModule,
   ],
   providers: [ValidateService,AuthService],
   bootstrap: [AppComponent]
