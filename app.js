@@ -33,10 +33,6 @@ app.use(cors());
 //   res.send("Hello From the Home side");
 // });
 
-// app.get("/", (req, res) => {
-//   res.send("Hello from the home side");
-// });
-
 //for production
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/dist"));
