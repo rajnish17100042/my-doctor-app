@@ -1,27 +1,29 @@
-<form method="post">
+<form (submit)="registerPatient()">
     <div class="container">
         <h1>Book Appointment</h1>
         <p>Please fill in this form to book an appointment with Doctor</p>
         <hr />
 
-        <input type="text" placeholder="Enter Name of Patient" required />
-        <input type="email" placeholder="Enter Email" required />
-        <input type="tel" placeholder="Enter Mobile Number" required />
-        <input type="text" placeholder="Enter Address" required />
-        <input type="text" placeholder="Enter City Name" required />
-        <input type="text" placeholder="Enter State" required />
-        <input type="text" placeholder="Enter Pincode" required />
+        <input type="text" [(ngModel)]="name" name="name" placeholder="Enter Name of Patient" required />
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Enter Email" required />
+        <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Enter Mobile Number" required />
+        <input type="text" [(ngModel)]="address" name="address" placeholder="Enter Address" required />
+        <input type="text" [(ngModel)]="city" name="city" placeholder="Enter City Name" required />
+        <input type="text" [(ngModel)]="state" name="state" placeholder="Enter State" required />
+        <input type="text" [(ngModel)]="pincode" name="pincode" placeholder="Enter Pincode" required />
 
-        <input type="date" placeholder="Enter date of appointment" required />
-        <input type="text" placeholder="Enter symptoms of the Patient" required>
-        <select required>
+        <input type="date" [(ngModel)]="appointment_date" name="appointment_date"
+            placeholder="Enter date of appointment" required />
+        <input type="text" [(ngModel)]="symptoms" name="symptoms" placeholder="Enter symptoms of the Patient" required>
+        <label for="doctor">Select your Doctor</label>
+        <select [(ngModel)]='doctor' name="doctor" required>
             <option value="" disabled selected>Select the Doctor</option>
             <option value="rajnish">Dr. Rajnish Patel</option>
             <option value="shivam">Dr. Shivam Singh</option>
             <option value="sundar">Dr. Sundar Raj Singh</option>
         </select>
-        <input type="password" placeholder="Enter Password" required />
-        <input type="password" placeholder="Confirm Password" required />
+        <input type="password" [(ngModel)]='password' name="password" placeholder="Enter Password" required />
+        <input type="password" [(ngModel)]='cpassword' name="cpassword" placeholder="Confirm Password" required />
         <hr />
 
         <button type="submit" class="registerbtn">

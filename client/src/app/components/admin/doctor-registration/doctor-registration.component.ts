@@ -35,6 +35,7 @@ export class DoctorRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   registerDoctor(){
     // window.alert("Form is submitting");
     // console.log(this.name);

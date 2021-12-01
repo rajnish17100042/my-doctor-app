@@ -25,7 +25,7 @@ router.post("/registration/:role", (req, res) => {
   // calling function for input validation
   const isInputValidated = validateInput(req);
 
-  // console.log(isInputValidated);
+  console.log(isInputValidated);
   if (!isInputValidated) {
     res
       .status(400)
@@ -48,7 +48,7 @@ router.post("/registration/:role", (req, res) => {
             message: "Some error occured please registered again",
           });
         }
-        //   console.log(result, result.length);
+        // console.log(result, result.length);
         if (result.length > 0) {
           // console.log("helo hello hello");
           return res
