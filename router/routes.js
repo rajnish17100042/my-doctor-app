@@ -13,101 +13,77 @@ const saltRounds = 12;
 // requiring database connection
 const db = require("../db/conn");
 
+const validateInput = require("../validation/input_data_validation.js");
+const getTableName = require("../validation/get_table_name.js");
+
 // create route for Admin registration
-router.post("/admin/adminRegistration", (req, res) => {
-  // console.log(req.user);
+router.post("/registration/:role", (req, res) => {
+  const role = req.params.role;
+  req.role = role;
   // console.log(req.role);
-  const adminData = req.body;
-  // console.log(adminData);
-  if (false) {
-    return res.status(400).json({ success: false, error: "Error! Try agiain" });
+
+  // calling function for input validation
+  const isInputValidated = validateInput(req);
+
+  console.log(isInputValidated);
+  if (!isInputValidated) {
+    res
+      .status(400)
+      .json({ success: false, message: "Please fill the data properly" });
   } else {
-    // destructuring the data
-    let {
-      name,
-      email,
-      phone,
-      address,
-      city,
-      state,
-      pincode,
-      joining_date,
-      password,
-    } = req.body;
+    //proceed forward after the  input validation
+    // first based on the role get table name
+    const tableName = getTableName(role);
+    console.log(tableName);
 
-    //   server side validation
-    if (
-      !name ||
-      !email ||
-      !phone ||
-      !address ||
-      !city ||
-      !state ||
-      !pincode ||
-      !joining_date ||
-      !password
-    ) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Please fill the data properly" });
-    }
-
-    // before registration check if admin already present
+    // before registration check if user already present
     db.query(
-      "select email from admin_registration where email=?",
-      email,
+      `select email from ${tableName} where email=?`,
+      req.body.email,
       (err, result) => {
         if (err) {
           // throw err;
           return res.status(400).json({
             success: false,
-            message: "Some error occured please register again",
+            message: "Some error occured please registered again",
           });
         }
         //   console.log(result, result.length);
         if (result.length > 0) {
           // console.log("helo hello hello");
-          return res.status(400).json("Admin is already registered");
+          return res
+            .status(400)
+            .json({ success: false, message: "user is already registered" });
         } else {
           // password hashing using bcrypt
-          bcrypt.hash(password, saltRounds, (err, hash) => {
+          bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
             if (err) {
               // throw err;
               return res.status(400).json({
                 success: false,
-                message: "Some error occured please register again",
+                message: "Some error occured please registered again",
               });
             }
-            password = hash;
-            // console.log(password);
-            let sql = "insert into admin_registration set ?";
-            let data = {
-              name,
-              email,
-              phone,
-              address,
-              city,
-              state,
-              pincode,
-              joining_date,
-              password,
-            };
-
+            req.body.password = hash;
+            // console.log(req.body.password);
+            let sql = `insert into ${tableName} set ?`;
+            // delete cpassword property from req.body object
+            delete req.body.cpassword;
+            console.log(req.body);
             // insert the data to database
-            db.query(sql, data, (err, result) => {
+            db.query(sql, req.body, (err, result) => {
               if (err) {
                 //   throw err;
                 return res.status(400).json({
                   success: false,
-                  message: "Some error occured please register again",
+                  message: "Some error occured please registered again",
                 });
               }
-              //   console.log(result);
-              // send email
-              //   passwordMailer(email, name);
+              // console.log(result);
+
               return res.status(200).json({
                 success: true,
-                message: "Admin registedred Successfully",
+                message: "User registedred Successfully",
               });
             });
           });

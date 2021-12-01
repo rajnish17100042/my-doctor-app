@@ -35,7 +35,7 @@ export class AdminRegistrationComponent implements OnInit {
   registerAdmin(){
     // window.alert("Form is submitting");
     // console.log(this.name);
-    const adminData={
+    const dataToSend={
       name:this.name,
       email:this.email,
       phone:this.phone,
@@ -46,23 +46,25 @@ export class AdminRegistrationComponent implements OnInit {
       joining_date:this.joining_date,
       password:this.password,
       cpassword:this.cpassword,
-    }
+    };
+    const role='admin';
 
+    
       //reuired all the fields
-    if(!this.validateService.validateAdminRegistration(adminData)){
+    if(!this.validateService.validateRegistration(dataToSend,role)){
       // window.alert("Please fill in all the fields");
       this.flashMessage.show("Please fill in all the fields also both the password should match",{cssClass:'alert-danger',timeout:3000});
       return false;
     }
     //validate email
-    if(!this.validateService.validateEmail(adminData.email)){
+    if(!this.validateService.validateEmail(dataToSend.email)){
       // window.alert("Please enter the correct email");
       this.flashMessage.show("Please enter the correct email",{cssClass:'alert-danger',timeout:3000});
       return false;
     }
 
     //send admin data to the server
-    this.authService.sendAdminData(adminData).subscribe(
+    this.authService.sendDataToServer(dataToSend,role).subscribe(
       data => {
        if(data.success){
           this.flashMessage.show("Admin is Registered",{cssClass:'alert-success',timeout:3000});

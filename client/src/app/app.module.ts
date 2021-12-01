@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule,RoutingComponents } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
-import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
+
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import {ValidateService}from './services/validate.service';
@@ -19,8 +19,6 @@ import { FlashMessagesModule } from 'flash-messages-angular';
   declarations: [
     AppComponent,
     RoutingComponents,
-    DoctorRegistrationComponent,
-    PatientRegistrationComponent,
     NavbarComponent,
   ],
 

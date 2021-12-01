@@ -6,14 +6,32 @@ import { Injectable } from '@angular/core';
 export class ValidateService {
 
   constructor() { }
-  validateAdminRegistration(adminUser){
-    if(!adminUser.name||!adminUser.email||!adminUser.phone||!adminUser.address||!adminUser.city||!adminUser.state||!adminUser.pincode||!adminUser.joining_date||!adminUser.password){
+  validateRegistration(dataToSend,role){
+
+    console.log("outside role if ");
+    //  console.log("hello",dataToSend.specialisation,dataToSend.experience,role);
+
+    // if role is doctor then do some extra data validation
+    if(role==='doctor'){
+      //console.log("hello",dataToSend.specialisation,dataToSend.experience,role);
+      if(!dataToSend.specialisation||!dataToSend.experience){
+        console.log("hello");
+        return false;
+      }
+
+    }
+
+    if(!dataToSend.name||!dataToSend.email||!dataToSend.phone||!dataToSend.address||!dataToSend.city||!dataToSend.state||!dataToSend.pincode||!dataToSend.joining_date||!dataToSend.password){
       return false;
     }
-    else if(adminUser.password!==adminUser.cpassword){
+    if(dataToSend.password!==dataToSend.cpassword){
       return false;
 
     }
+  
+
+    
+
     else{ 
       return true;
     }

@@ -10,10 +10,10 @@ export class AuthService {
   user:any;
   constructor(private http:HttpClient) { }
 
-  sendAdminData(adminData){
+  sendDataToServer(dataToSend,role){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
-    return this.http.post<any>('/admin/adminRegistration',adminData,{headers:headers})
+    return this.http.post<any>('/registration/'+role,dataToSend,{headers:headers})
 
   }
 
