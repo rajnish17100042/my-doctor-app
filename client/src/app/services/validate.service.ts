@@ -12,27 +12,27 @@ export class ValidateService {
 
  // if role is patient then do some extra data validation
     if(role==='patient' && (!dataToSend.appointment_date||!dataToSend.symptoms||!dataToSend.doctor)){
-      console.log("patient role");
+      // console.log("patient role");
      return false;
     }
 
     // if role is doctor then do some extra data validation
     if(role==='doctor' && (!dataToSend.specialisation||!dataToSend.experience||!dataToSend.joining_date)){
-      console.log("doctor role");
+      // console.log("doctor role");
     return false;
     }
 
     if(!dataToSend.name||!dataToSend.email||!dataToSend.phone||!dataToSend.address||!dataToSend.city||!dataToSend.state||!dataToSend.pincode||!dataToSend.password){
-      console.log("normal checking");
+      // console.log("normal checking");
       return false;
     }
     if(dataToSend.password!==dataToSend.cpassword){
-      console.log("password checking");
+      // console.log("password checking");
       return false;
     }
   
     else{ 
-      console.log("else part");
+      // console.log("else part");
       return true;
     }
   }
