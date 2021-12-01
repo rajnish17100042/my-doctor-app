@@ -8,14 +8,14 @@ export class ValidateService {
   constructor() { }
   validateRegistration(dataToSend,role){
 
-    console.log("outside role if ");
+    // console.log("outside role if ");
     //  console.log("hello",dataToSend.specialisation,dataToSend.experience,role);
 
     // if role is doctor then do some extra data validation
     if(role==='doctor'){
       //console.log("hello",dataToSend.specialisation,dataToSend.experience,role);
       if(!dataToSend.specialisation||!dataToSend.experience){
-        console.log("hello");
+        // console.log("hello");
         return false;
       }
 

@@ -25,7 +25,7 @@ router.post("/registration/:role", (req, res) => {
   // calling function for input validation
   const isInputValidated = validateInput(req);
 
-  console.log(isInputValidated);
+  // console.log(isInputValidated);
   if (!isInputValidated) {
     res
       .status(400)
@@ -34,7 +34,7 @@ router.post("/registration/:role", (req, res) => {
     //proceed forward after the  input validation
     // first based on the role get table name
     const tableName = getTableName(role);
-    console.log(tableName);
+    // console.log(tableName);
 
     // before registration check if user already present
     db.query(
@@ -69,7 +69,7 @@ router.post("/registration/:role", (req, res) => {
             let sql = `insert into ${tableName} set ?`;
             // delete cpassword property from req.body object
             delete req.body.cpassword;
-            console.log(req.body);
+            // console.log(req.body);
             // insert the data to database
             db.query(sql, req.body, (err, result) => {
               if (err) {
