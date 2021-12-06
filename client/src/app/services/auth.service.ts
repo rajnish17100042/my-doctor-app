@@ -17,4 +17,17 @@ export class AuthService {
 
   }
 
+   authenticateUser(user){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.post<any>('http://localhost:5000/login',user,{headers:headers,})
+   }
+
+
+
+
+
+
+
 }
