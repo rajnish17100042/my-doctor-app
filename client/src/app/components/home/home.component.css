@@ -1,0 +1,328 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+*{
+    box-sizing: border-box;
+    
+    
+}
+
+
+p{
+
+    color:rgba(0, 0, 0, 0.616);
+}
+
+
+/* similar css code for the title of each section */
+.section-title{
+    padding:50px 0;
+}
+
+.section-title h2{
+    font-size:40px;
+    font-weight:100;
+    color:rgba(19, 20, 20, 0.877);
+}
+
+
+.section-title hr{
+    width:65px;
+    height:1px;
+    background-color:rgb(11, 162, 219);
+    
+} 
+/* end of similar css code */
+
+
+/* css for home section */
+#home .bg-image{
+  
+    background:url(../../images/intro-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    height:120vh;
+    
+}
+.home-content{
+    position:absolute;
+    top:35%;
+    left:25%;
+    z-index:1;
+}
+
+.home-content h1 {
+    color: rgb(11, 162, 219);
+    font-size: 74px;
+    font-weight: 600;
+    
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.home-content p {
+    color: rgba(1, 6, 8, 0.651);
+    font-size: 25px;
+    font-weight:200;
+    margin-top: 0px;
+    text-transform: uppercase;
+    margin-bottom:90px;
+}
+
+
+.button{
+    border:1px solid transparent;
+    border-radius:2px;
+    background-color:rgb(11, 162, 219);
+    padding:15px 15px;
+    color:rgb(253, 252, 252);
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing:1px;
+    text-align:center;
+}
+ 
+.button:hover{
+    background-color:rgb(102, 102, 102);
+}
+/* end of home section css */
+
+
+
+/* css for about section */
+#about{
+    margin:50px 0 100px 0;
+}
+.about-image{
+    padding:20px 20px;
+    height:60vh;
+    border:1px solid rgb(11, 162, 219);
+    border-radius:20px;
+}
+.about-image .bg-image{
+    background:url(../../images/about.jpg) no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    height:54vh;
+    
+}
+
+.about-text h3{
+  font-size:20px;
+  font-weight:500;
+  padding:20px 0;
+}
+
+.about-text p{
+   padding:10px 0;
+  }
+
+.about-text li{
+    list-style:none;
+    letter-spacing:0.5px;
+  
+}
+
+.about-text li::before{
+    content:"\2713" ;   /*  ( \2713 ) is the css code for tick mark */
+    letter-spacing:5px;
+    color:rgb(11, 162, 219);
+}
+/* end of css for about section */
+
+
+
+/* css code for service section */
+#service{
+    background-color:rgba(214, 210, 210, 0.158);
+    padding:50px 0 100px 0;
+}
+
+.section-title p{
+
+    font-size:20px;
+    font-weight:100;
+    
+
+}
+
+#service i{
+    font-size:40px;
+    color:rgb(11, 162, 219);
+    padding-bottom:10px;
+}
+/* end of css for service section */
+
+
+
+/* css for pricing section */
+#pricing{
+    padding:50px 0 100px 0;
+}
+
+
+
+.price {
+    list-style: none;
+    border: 1px solid rgb(238, 238, 238);
+    margin:10px 0;
+    padding: 0;
+  }
+  
+  .price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+  }
+  
+  .price .header {
+    background-color: rgb(238, 236, 236);
+    color: rgba(10, 10, 10, 0.822);
+    font-size:25px;
+    padding:20px;
+  }
+  
+  .price .std-header{
+    background-color: rgb(11, 162, 219);
+    color: rgb(255, 255, 255);
+    font-size:25px;
+    padding:30px;
+  }
+  
+  .price li {
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding: 20px;
+    text-align: center;
+  }
+  
+ .price .charge{
+     font-size: 42px;
+ }
+
+
+
+ 
+ 
+
+ .price .std-last-list {
+     padding:30px;
+     background-color:rgb(11, 162, 219);
+ }
+
+.std-button{
+    border:1px solid rgb(255, 255, 255);
+    border-radius:2px;
+    background-color:rgb(11, 162, 219);
+    padding:10px 20px;
+    color:rgb(255, 255, 255);
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing:1px;
+    text-align:center;
+}
+
+.std-button:hover{
+    background-color:rgb(102, 102, 102);
+}
+/* end of css code for pricing section */
+
+
+
+/* css for contact section */
+#contact{
+    background-color:rgba(230, 227, 227, 0.384);
+
+}
+
+.form-container{
+    margin:0 200px;
+}
+
+.form-data input{
+    margin:0 0 10px 0;
+   
+}
+.form-data textarea{
+    height:100px;
+}
+
+.form-data button{
+    margin-top:25px;
+}
+
+.social{
+     padding:100px 0;
+}
+.social li{
+    
+    list-style:none;
+    display:inline-block;
+    padding:0 25px;
+    font-size:25px;
+}
+/* end of css code for contact section */
+
+
+/* css for footer */
+#footer{
+    background-color:#ffffff!important;
+    padding:30px 0 20px 0;
+    text-align:center;
+}
+
+#footer a{
+    text-decoration:none;
+    color:rgba(143, 40, 40, 0);
+}
+
+
+
+/* media query */
+
+
+/* ipad size */
+@media screen and (max-width:768px){
+
+   
+
+    #home .bg-image{
+       height:100vh;
+    }
+    .home-content{
+        position:absolute;
+        top:30%;
+        left:6%;
+    }
+    
+ .form-container{
+     margin:0;
+ }
+
+
+ 
+ }
+
+
+/* for mobile responsive  */
+@media screen and (max-width:600px){
+     
+    .home-content{
+        position:absolute;
+        top:30%;
+        left:5%;
+    }
+    
+    .form-container{
+        margin:0;
+    }
+    
+    .social li{
+        margin-left:0;
+        padding:10px;
+       
+   }
+ 
+ }

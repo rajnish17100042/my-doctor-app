@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {ValidateService}from './services/validate.service';
 import {AuthService}from './services/auth.service';
 import { FlashMessagesModule } from 'flash-messages-angular';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -20,6 +21,7 @@ import { FlashMessagesModule } from 'flash-messages-angular';
     AppComponent,
     RoutingComponents,
     NavbarComponent,
+    HomeComponent,
   ],
 
   imports: [

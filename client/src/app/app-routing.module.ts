@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
 import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
@@ -9,6 +10,17 @@ const routes: Routes = [
   {
    path:'login',
    component:LoginComponent,
+  },
+  // routing for the Home page 
+  { 
+    path: '',
+   redirectTo: '/home',
+   pathMatch: 'full'
+   },
+
+  {
+   path: 'home',
+   component: HomeComponent
   },
    // routing for the admin registration by super admin 
   {
@@ -32,4 +44,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents=[LoginComponent,AdminRegistrationComponent,DoctorRegistrationComponent,PatientRegistrationComponent]
+export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorRegistrationComponent,PatientRegistrationComponent]
