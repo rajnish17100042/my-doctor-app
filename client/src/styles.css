@@ -12,11 +12,11 @@ body {
 }
 
 /* Add padding to containers */
-.container {
+/* .container {
   margin:0;
   padding: 16px;
   background-color: white;
-}
+} */
 
 /* Full-width input fields */
 input,textarea,select {
