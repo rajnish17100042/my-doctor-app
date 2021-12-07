@@ -12,16 +12,17 @@ body {
 }
 
 /* Add padding to containers */
-/* .container {
+.container {
+  margin:5px;
   padding: 16px;
   background-color: white;
-} */
+}
 
 /* Full-width input fields */
 input,textarea,select {
   width: 100%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 5px 0 22px 0!important;
   display: inline-block;
   border: none;
   background: #f1f1f1;
