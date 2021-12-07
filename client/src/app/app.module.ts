@@ -12,6 +12,8 @@ import {ValidateService}from './services/validate.service';
 import {AuthService}from './services/auth.service';
 import { FlashMessagesModule } from 'flash-messages-angular';
 import { HomeComponent } from './components/home/home.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { RegistrationDetailsComponent } from './components/admin/registration-details/registration-details.component';
 
 
 
@@ -22,6 +24,8 @@ import { HomeComponent } from './components/home/home.component';
     RoutingComponents,
     NavbarComponent,
     HomeComponent,
+    AdminDashboardComponent,
+    RegistrationDetailsComponent,
   ],
 
   imports: [

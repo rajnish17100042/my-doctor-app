@@ -1,0 +1,47 @@
+<div>
+    <div class="wrapper">
+        <!-- <div class="sidebar">
+            <ul>
+                <li>
+                    <img class="avatar" :src="`https://student-dbms-images.s3.amazonaws.com/${image}`" :alt="name" />
+                </li>
+
+                <li>
+                    <a><i class="fas fa-envelope"></i>email </a>
+                </li>
+                <li>
+                    <a><i class="fas fa-phone"></i> phone </a>
+                </li>
+            </ul>
+            <button @click="logout">Logout</button>      not working here 
+    </div> -->
+
+        <div class="main_content">
+            <div class="header">
+                Welcome <strong>name </strong> !! Have a nice day.
+                <button>Logout</button>
+                <button>
+                    <a routerLink="/admin/register-patient">Register Patient</a>
+                </button>
+                <button>
+                    <a routerLink="/admin/register-doctor">Register Doctor</a>
+                </button>
+                <button>
+                    <a routerLink="/admin/register-admin">Register Admin</a>
+                </button>
+                <button>
+                    <a routerLink="/notice-board">Issue a Notice</a>
+                </button>
+                <button>
+                    <a routerLink="/admin/job-application">Job Application</a>
+                </button>
+                <button>
+                    <a routerLink="/upload-image"><i class="fas fa-image">Upload Image</i></a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- details regarding registration   -->
+    <app-registration-details></app-registration-details>
+</div>

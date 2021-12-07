@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
 import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
 const routes: Routes = [
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
    path: 'home',
    component: HomeComponent
+  },
+   // routing for the admin dashboard 
+  {
+   path:'admin/dashboard',
+   component:AdminDashboardComponent,
   },
    // routing for the admin registration by super admin 
   {
