@@ -13,8 +13,9 @@ const saltRounds = 12;
 // requiring database connection
 const db = require("../db/conn");
 
-const validateInput = require("../validation/input_data_validation.js");
-const getTableName = require("../validation/get_table_name.js");
+const validateInput = require("../validation/input_data_validation");
+const getTableName = require("../validation/get_table_name");
+const authenticate = require("../middleware/authentication");
 
 // create route for Admin registration
 router.post("/registration/:role", (req, res) => {
@@ -200,6 +201,10 @@ router.post("/login", (req, res) => {
   });
 
   // console.log(result);
+});
+
+router.post("/adminDashboard", authenticate, (req, res) => {
+  console.log("hello");
 });
 
 module.exports = router;
