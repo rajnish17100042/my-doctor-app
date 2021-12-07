@@ -13,7 +13,7 @@ body {
 
 /* Add padding to containers */
 .container {
-  margin:5px;
+  margin:0;
   padding: 16px;
   background-color: white;
 }
@@ -91,14 +91,14 @@ a {
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
-/* *{
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
   text-decoration: none!important;
   font-family: 'Josefin Sans', sans-serif;
-} */
+}
 
 body{
    background-color: #d1d1d1;
