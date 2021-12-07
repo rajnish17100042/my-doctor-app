@@ -47,7 +47,7 @@ login(){
 
   this.authService.authenticateUser(user).subscribe(data=>{
       if(data.success){
-        console.log(data.token);
+        // console.log(data.token);
         this.flashMessage.show("Successfully Logged In",{cssClass:'alert-success',timeout:3000});
         this.router.navigate(['/']);
       }else{
