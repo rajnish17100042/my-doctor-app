@@ -189,6 +189,7 @@ router.post("/login", (req, res) => {
         return res.status(200).json({
           success: true,
           token: token,
+          role: role,
         });
       });
     } catch (err) {

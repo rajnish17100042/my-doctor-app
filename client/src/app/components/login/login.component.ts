@@ -49,7 +49,14 @@ login(){
       if(data.success){
         // console.log(data.token);
         this.flashMessage.show("Successfully Logged In",{cssClass:'alert-success',timeout:3000});
-        this.router.navigate(['/']);
+        console.log(data.role);
+        if(data.role==='admin'){
+        this.router.navigate(['/admin/dashboard']);
+        }
+        else{
+         this.router.navigate(['/login']);
+        }
+        
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
       }
