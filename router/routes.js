@@ -215,7 +215,7 @@ router.get("/adminDashboard", authenticate, (req, res) => {
   } else {
     const adminData = req.user;
     console.log(adminData);
-    return res.json({ success: true, adminData });
+    return res.json({ success: true, adminData: adminData });
   }
 });
 

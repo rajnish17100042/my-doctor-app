@@ -30,7 +30,7 @@ export class AdminDashboardComponent implements OnInit {
         // console.log(data.token);
         // this.flashMessage.show("Rendering the dashboard",{cssClass:'alert-success',timeout:3000});
         // this.router.navigate(['/admin/dashboard']); by writing this will call infinite loop
-        console.log(this.name);
+        console.log(data.adminData);
         this.name=data.adminData.name;
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
