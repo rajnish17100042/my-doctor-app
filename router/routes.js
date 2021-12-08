@@ -246,7 +246,7 @@ router.get("/registrationDetails", authenticate, (req, res) => {
   } else {
     // get all patients
     const sql1 =
-      "select id,name,email,phone,symptoms,doctor from patient_registration limit 5";
+      "select id,name,email,phone,symptoms,doctor from patient_registration";
     db.query(sql1, (err, result1) => {
       if (err) {
         //  throw err
@@ -261,7 +261,7 @@ router.get("/registrationDetails", authenticate, (req, res) => {
 
     // get all doctor
     const sql2 =
-      "select id,name,email,phone,specilisation,experience from doctor_registration limit 5";
+      "select id,name,email,phone,specialisation,experience from doctor_registration";
     db.query(sql2, (err, result2) => {
       if (err) {
         //  throw err
@@ -275,8 +275,8 @@ router.get("/registrationDetails", authenticate, (req, res) => {
     });
 
     // get all admins
-    const sql3 = "select id,name,email,phone from admin_registration  limit 5";
-    db.query(sql3, 0, (err, result3) => {
+    const sql3 = "select id,name,email,phone from admin_registration";
+    db.query(sql3, (err, result3) => {
       if (err) {
         //  throw err
         return res.json({ success: false, message: "Error occured" });
