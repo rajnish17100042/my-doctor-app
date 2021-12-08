@@ -27,7 +27,7 @@ export class AuthService {
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
     headers.append( "credentials", "include");
-    return this.http.get<any>('http://localhost:5000/'+route,{headers:headers,})
+    return this.http.get<any>('/'+route,{headers:headers,})
    }
 
 
