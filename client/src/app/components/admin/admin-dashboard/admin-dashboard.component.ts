@@ -11,11 +11,7 @@ import {FlashMessagesService} from 'flash-messages-angular';
 })
 export class AdminDashboardComponent implements OnInit {
   route:String;
-  adminData={
-      name:'',
-      email:'',
-      phone:'',
-    };
+  name:String;
 
   constructor(
     private validateService:ValidateService,
@@ -25,7 +21,7 @@ export class AdminDashboardComponent implements OnInit {
     ) { }
 
   ngOnInit(){
-  
+    
     this.route='adminDashboard';
     //take the page from frotend and role from the backend cookie
     
@@ -34,8 +30,8 @@ export class AdminDashboardComponent implements OnInit {
         // console.log(data.token);
         // this.flashMessage.show("Rendering the dashboard",{cssClass:'alert-success',timeout:3000});
         // this.router.navigate(['/admin/dashboard']); by writing this will call infinite loop
-        console.log(this.adminData);
-        this.adminData=data.adminData;
+        console.log(this.name);
+        this.name=data.adminData.name;
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
          this.router.navigate(['/login']);
