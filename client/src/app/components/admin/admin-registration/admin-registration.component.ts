@@ -21,7 +21,7 @@ export class AdminRegistrationComponent implements OnInit {
   joining_date:String;
   password:String;
   cpassword:String;
-  pageRender:boolean = false;
+ 
 
 
   constructor(
@@ -43,7 +43,7 @@ export class AdminRegistrationComponent implements OnInit {
         // this.router.navigate(['/admin/dashboard']); by writing this will call infinite loop
       //  console.log(data.message);
        this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
-       this.pageRender=true;
+      
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
          this.router.navigate(['/login']);
