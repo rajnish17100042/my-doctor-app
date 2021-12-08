@@ -30,7 +30,12 @@ export class AuthService {
     return this.http.get<any>('/'+route,{headers:headers,})
    }
 
-
+ getRegistrationDetails(){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/registrationDetails',{headers:headers,})
+   }
 
 
 

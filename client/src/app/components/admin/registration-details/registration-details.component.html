@@ -15,21 +15,23 @@
                     <th>Doctor</th>
                     <th>Action</th>
                 </tr>
-                <tr v-for="patient in patients" :key="patient.id">
-                    <td>patient.name </td>
-                    <td>patient.email </td>
-                    <td>patient.phone </td>
-                    <td>patient.symptoms </td>
-                    <td>patient.doctor </td>
-                    <td>
-                        <a routerLink="'/admin/update-patient/' + patient.id"><i class="fas fa-edit"></i>
-                        </a>
-                        <a routerLink="'/delete-patient/' + patient.id"><i class="fas fa-trash"
-                                style="padding:0px 20px"></i></a>
-                        <a routerLink="'/update-patient-password/' + patient.id"><i class="fas fa-key"></i>
-                        </a>
-                    </td>
-                </tr>
+                <div *ngFor="let patient of patients">
+                    <tr>
+                        <td>patient.name </td>
+                        <td>patient.email </td>
+                        <td>patient.phone </td>
+                        <td>patient.symptoms </td>
+                        <td>patient.doctor </td>
+                        <td>
+                            <a routerLink="'/admin/update-patient/' + patient.id"><i class="fas fa-edit"></i>
+                            </a>
+                            <a routerLink="'/delete-patient/' + patient.id"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
+                            <a routerLink="'/update-patient-password/' + patient.id"><i class="fas fa-key"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </div>
             </table>
         </div>
 
@@ -48,21 +50,23 @@
                     <th>Experience</th>
                     <th>Action</th>
                 </tr>
-                <tr v-for="doctor in doctors" :key="doctor.id">
-                    <td>doctor.name </td>
-                    <td>doctor.email </td>
-                    <td>doctor.phone </td>
-                    <td>doctor.specialisation </td>
-                    <td>doctor.experience </td>
-                    <td>
-                        <a routerLink="'/admin/update-doctor/' + doctor.id"><i class="fas fa-edit"></i>
-                        </a>
-                        <a routerLink="'/delete-doctor/' + doctor.id"><i class="fas fa-trash"
-                                style="padding:0px 20px"></i></a>
-                        <a routerLink="'/update-doctor-password/' + doctor.id"><i class="fas fa-key"></i>
-                        </a>
-                    </td>
-                </tr>
+                <div *ngFor="let doctor of doctors">
+                    <tr>
+                        <td>doctor.name </td>
+                        <td>doctor.email </td>
+                        <td>doctor.phone </td>
+                        <td>doctor.specialisation </td>
+                        <td>doctor.experience </td>
+                        <td>
+                            <a routerLink="'/admin/update-doctor/' + doctor.id"><i class="fas fa-edit"></i>
+                            </a>
+                            <a routerLink="'/delete-doctor/' + doctor.id"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
+                            <a routerLink="'/update-doctor-password/' + doctor.id"><i class="fas fa-key"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </div>
             </table>
         </div>
 
@@ -80,19 +84,21 @@
 
                     <th>Action</th>
                 </tr>
-                <tr v-for="admin in admins" :key="admin.id">
-                    <td>admin.name </td>
-                    <td>admin.email </td>
-                    <td>admin.phone </td>
-                    <td>
-                        <a routerLink="'/admin/update-admin/' + admin.id"><i class="fas fa-edit"></i>
-                        </a>
-                        <a routerLink="'/delete-admin/' + admin.id"><i class="fas fa-trash"
-                                style="padding:0px 20px"></i></a>
-                        <a routerLink="'/update-admin-password/' + admin.id"><i class="fas fa-key"></i>
-                        </a>
-                    </td>
-                </tr>
+                <div *ngFor="let admin of admins">
+                    <tr>
+                        <td>admin.name </td>
+                        <td>admin.email </td>
+                        <td>admin.phone </td>
+                        <td>
+                            <a routerLink="'/admin/update-admin/' + admin.id"><i class="fas fa-edit"></i>
+                            </a>
+                            <a routerLink="'/delete-admin/' + admin.id"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
+                            <a routerLink="'/update-admin-password/' + admin.id"><i class="fas fa-key"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </div>
             </table>
         </div>
     </div>

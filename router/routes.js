@@ -222,7 +222,7 @@ router.get("/adminDashboard", authenticate, (req, res) => {
 
 // route to protect the registration page done by the admin
 router.get("/registrationRoute", authenticate, (req, res) => {
-  console.log("Hello");
+  // console.log("Hello");
   // double checking
   if (req.role !== "admin") {
     return res.json({
@@ -231,6 +231,66 @@ router.get("/registrationRoute", authenticate, (req, res) => {
     });
   } else {
     return res.json({ success: true, message: "rendering the page" });
+  }
+});
+
+// get all the registration details of admin,doctor and patient
+router.get("/registrationDetails", authenticate, (req, res) => {
+  var results = []; //global variable
+  // console.log(req.role);
+  if (req.role !== "admin") {
+    return res.json({
+      success: false,
+      message: "Do not have proper permission",
+    });
+  } else {
+    // get all patients
+    const sql1 =
+      "select id,name,email,phone,symptoms,doctor from patient_registration limit 5";
+    db.query(sql1, (err, result1) => {
+      if (err) {
+        //  throw err
+        return res.json({ success: false, message: "Error occured" });
+      } else {
+        // console.log(result1);
+        results.push(result1);
+        // console.log(results);
+        // return res.status(200).json({ result });
+      }
+    });
+
+    // get all doctor
+    const sql2 =
+      "select id,name,email,phone,specilisation,experience from doctor_registration limit 5";
+    db.query(sql2, (err, result2) => {
+      if (err) {
+        //  throw err
+        return res.json({ success: false, message: "Error occured" });
+      } else {
+        // console.log(result2);
+        results.push(result2);
+        // console.log(results);
+        // return res.status(200).json({ result });
+      }
+    });
+
+    // get all admins
+    const sql3 = "select id,name,email,phone from admin_registration  limit 5";
+    db.query(sql3, 0, (err, result3) => {
+      if (err) {
+        //  throw err
+        return res.json({ success: false, message: "Error occured" });
+      } else {
+        // console.log(result3);
+        results.push(result3);
+        // console.log(results);
+        // return res.status(200).json({ results });
+      }
+      // console.log(results);
+
+      // send all the results to the client
+      return res.json({ success: true, results });
+    });
   }
 });
 
