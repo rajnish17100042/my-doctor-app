@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="adminData">
     <div class="wrapper">
         <!-- <div class="sidebar">
             <ul>
@@ -18,7 +18,7 @@
 
         <div class="main_content">
             <div class="header">
-                Welcome <strong>{{name}} </strong> !! Have a nice day.
+                Welcome <strong>{{adminData.name}} </strong> !! Have a nice day.
                 <button>Logout</button>
                 <button>
                     <a routerLink="/admin/patient-registration">Register Patient</a>

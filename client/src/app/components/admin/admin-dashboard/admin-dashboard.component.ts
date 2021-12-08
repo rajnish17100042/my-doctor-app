@@ -11,7 +11,7 @@ import {FlashMessagesService} from 'flash-messages-angular';
 })
 export class AdminDashboardComponent implements OnInit {
   route:String;
-  name:String;
+  adminData:Object;
 
   constructor(
     private validateService:ValidateService,
@@ -31,7 +31,7 @@ export class AdminDashboardComponent implements OnInit {
         // this.flashMessage.show("Rendering the dashboard",{cssClass:'alert-success',timeout:3000});
         // this.router.navigate(['/admin/dashboard']); by writing this will call infinite loop
         console.log(data.adminData);
-        this.name=data.adminData.name;
+        this.adminData=data.adminData;
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
          this.router.navigate(['/login']);
