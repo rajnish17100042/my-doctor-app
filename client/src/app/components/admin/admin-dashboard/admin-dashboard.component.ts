@@ -22,13 +22,15 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(){
     this.adminData={};
+    this.route='adminDashboard';
     //take the page from frotend and role from the backend cookie
-    this.route="adminDashboard";
+    
      this.authService.authenticateRoute(this.route).subscribe(data=>{
       if(data.success){
         // console.log(data.token);
         // this.flashMessage.show("Rendering the dashboard",{cssClass:'alert-success',timeout:3000});
         // this.router.navigate(['/admin/dashboard']); by writing this will call infinite loop
+        console.log(this.adminData);
         this.adminData=data.adminData;
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});

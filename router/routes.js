@@ -203,8 +203,19 @@ router.post("/login", (req, res) => {
   // console.log(result);
 });
 
-router.post("/adminDashboard", authenticate, (req, res) => {
-  console.log("hello");
+router.get("/adminDashboard", authenticate, (req, res) => {
+  console.log("Hello");
+  // double checking
+  if (req.role !== "admin") {
+    return res.json({
+      success: false,
+      message: "Page can't be rendered! Login First",
+    });
+  } else {
+    const adminData = req.user;
+    console.log(adminData);
+    return res.json({ success: true, adminData });
+  }
 });
 
 module.exports = router;
