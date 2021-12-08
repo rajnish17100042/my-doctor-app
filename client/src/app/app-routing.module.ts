@@ -13,14 +13,14 @@ const routes: Routes = [
    component:LoginComponent,
   },
   // routing for the Home page 
-  { 
-    path: '',
-   redirectTo: '/home',
-   pathMatch: 'full'
-   },
+  // { 
+  //   path: '',
+  //  redirectTo: '/home',
+  //  pathMatch: 'full'
+  //  },
 
   {
-   path: 'home',
+   path: '',
    component: HomeComponent
   },
    // routing for the admin dashboard 
