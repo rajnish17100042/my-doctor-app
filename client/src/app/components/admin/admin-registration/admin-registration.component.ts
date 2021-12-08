@@ -21,6 +21,7 @@ export class AdminRegistrationComponent implements OnInit {
   joining_date:String;
   password:String;
   cpassword:String;
+  
 
 
   constructor(
@@ -30,7 +31,23 @@ export class AdminRegistrationComponent implements OnInit {
     private router:Router,
     ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  const route='registrationRoute';
+  
+    //take the page from frotend and role from the backend cookie
+    
+     this.authService.authenticateRoute(route).subscribe(data=>{
+      if(data.success){
+        // console.log(data.token);
+        // this.flashMessage.show("Rendering the dashboard",{cssClass:'alert-success',timeout:3000});
+        // this.router.navigate(['/admin/dashboard']); by writing this will call infinite loop
+      //  console.log(data.message);
+       this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
+      }else{
+        this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
+         this.router.navigate(['/login']);
+      }
+  }); 
   }
   registerAdmin(){
     // window.alert("Form is submitting");
@@ -48,6 +65,7 @@ export class AdminRegistrationComponent implements OnInit {
       cpassword:this.cpassword,
     };
     const role='admin';
+    
 
     
       //reuired all the fields

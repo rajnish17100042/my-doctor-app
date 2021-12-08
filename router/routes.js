@@ -204,6 +204,7 @@ router.post("/login", (req, res) => {
   // console.log(result);
 });
 
+// route for admin dashboard
 router.get("/adminDashboard", authenticate, (req, res) => {
   console.log("Hello");
   // double checking
@@ -216,6 +217,20 @@ router.get("/adminDashboard", authenticate, (req, res) => {
     const adminData = req.user;
     console.log(adminData[0]);
     return res.json({ success: true, adminData: adminData[0] });
+  }
+});
+
+// route to protect the registration page done by the admin
+router.get("/registrationRoute", authenticate, (req, res) => {
+  console.log("Hello");
+  // double checking
+  if (req.role !== "admin") {
+    return res.json({
+      success: false,
+      message: "Page can't be rendered! Login First",
+    });
+  } else {
+    return res.json({ success: true, message: "rendering the page" });
   }
 });
 
