@@ -11,7 +11,11 @@ import {FlashMessagesService} from 'flash-messages-angular';
 })
 export class AdminDashboardComponent implements OnInit {
   route:String;
-  adminData:Object;
+  adminData={
+      name:'',
+      email:'',
+      phone:'',
+    };
 
   constructor(
     private validateService:ValidateService,
@@ -21,7 +25,7 @@ export class AdminDashboardComponent implements OnInit {
     ) { }
 
   ngOnInit(){
-    this.adminData={};
+  
     this.route='adminDashboard';
     //take the page from frotend and role from the backend cookie
     
