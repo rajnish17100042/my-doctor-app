@@ -1,113 +1,115 @@
-<div class="wrapper">
-    <div class="main_content">
-        <!-- displaying student data  -->
-        <div class="header">
-            <h1>Patients List</h1>
-        </div>
+<div *ngIf="patients && doctors && admins">
+    <div class="wrapper">
+        <div class="main_content">
+            <!-- displaying student data  -->
+            <div class="header">
+                <h1>Patients List</h1>
+            </div>
 
-        <div class="info">
-            <table id="customers">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Symptoms</th>
-                    <th>Doctor</th>
-                    <th>Action</th>
-                </tr>
-
-
-
-                <tr *ngFor="let patient of patients">
-                    <td>{{patient.name}} </td>
-                    <td>{{patient.email}} </td>
-                    <td>{{patient.phone}} </td>
-                    <td>{{patient.symptoms}} </td>
-                    <td>{{patient.doctor}} </td>
-                    <td>
-                        <a routerLink="'/admin/update-patient/' + patient.id"><i class="fas fa-edit"></i>
-                        </a>
-                        <a routerLink="'/delete-patient/' + patient.id"><i class="fas fa-trash"
-                                style="padding:0px 20px"></i></a>
-                        <a routerLink="'/update-patient-password/' + patient.id"><i class="fas fa-key"></i>
-                        </a>
-                    </td>
-
-                </tr>
-
-            </table>
-        </div>
-
-        <!-- displaying teacher data   -->
-        <div class="header">
-            <h1>Doctors List</h1>
-        </div>
-
-        <div class="info">
-            <table id="customers">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>specialisation</th>
-                    <th>Experience</th>
-                    <th>Action</th>
-                </tr>
+            <div class="info">
+                <table id="customers">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Symptoms</th>
+                        <th>Doctor</th>
+                        <th>Action</th>
+                    </tr>
 
 
-                <tr *ngFor="let doctor of doctors">
-                    <td>{{doctor.name}} </td>
-                    <td>{{doctor.email}} </td>
-                    <td>{{doctor.phone}} </td>
-                    <td>{{doctor.specialisation}} </td>
-                    <td>{{doctor.experience}} </td>
-                    <td>
-                        <a routerLink="'/admin/update-doctor/' + doctor.id"><i class="fas fa-edit"></i>
-                        </a>
-                        <a routerLink="'/delete-doctor/' + doctor.id"><i class="fas fa-trash"
-                                style="padding:0px 20px"></i></a>
-                        <a routerLink="'/update-doctor-password/' + doctor.id"><i class="fas fa-key"></i>
-                        </a>
-                    </td>
 
-                </tr>
+                    <tr *ngFor="let patient of patients">
+                        <td>{{patient.name}} </td>
+                        <td>{{patient.email}} </td>
+                        <td>{{patient.phone}} </td>
+                        <td>{{patient.symptoms}} </td>
+                        <td>{{patient.doctor}} </td>
+                        <td>
+                            <a routerLink="'/admin/update-patient/' + patient.id"><i class="fas fa-edit"></i>
+                            </a>
+                            <a routerLink="'/delete-patient/' + patient.id"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
+                            <a routerLink="'/update-patient-password/' + patient.id"><i class="fas fa-key"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
+
+            <!-- displaying teacher data   -->
+            <div class="header">
+                <h1>Doctors List</h1>
+            </div>
+
+            <div class="info">
+                <table id="customers">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>specialisation</th>
+                        <th>Experience</th>
+                        <th>Action</th>
+                    </tr>
 
 
-            </table>
-        </div>
+                    <tr *ngFor="let doctor of doctors">
+                        <td>{{doctor.name}} </td>
+                        <td>{{doctor.email}} </td>
+                        <td>{{doctor.phone}} </td>
+                        <td>{{doctor.specialisation}} </td>
+                        <td>{{doctor.experience}} </td>
+                        <td>
+                            <a routerLink="'/admin/update-doctor/' + doctor.id"><i class="fas fa-edit"></i>
+                            </a>
+                            <a routerLink="'/delete-doctor/' + doctor.id"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
+                            <a routerLink="'/update-doctor-password/' + doctor.id"><i class="fas fa-key"></i>
+                            </a>
+                        </td>
 
-        <!-- displaying Admin data   -->
-        <div class="header">
-            <h1>Admins List</h1>
-        </div>
+                    </tr>
 
-        <div class="info">
-            <table id="customers">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
 
-                    <th>Action</th>
-                </tr>
+                </table>
+            </div>
 
-                <tr *ngFor="let admin of admins">
+            <!-- displaying Admin data   -->
+            <div class="header">
+                <h1>Admins List</h1>
+            </div>
 
-                    <td>{{admin.name}}</td>
-                    <td>{{admin.email}} </td>
-                    <td>{{admin.phone}} </td>
-                    <td>
-                        <a routerLink="'/admin/update-admin/' + admin.id"><i class="fas fa-edit"></i>
-                        </a>
-                        <a routerLink="'/delete-admin/' + admin.id"><i class="fas fa-trash"
-                                style="padding:0px 20px"></i></a>
-                        <a routerLink="'/update-admin-password/' + admin.id"><i class="fas fa-key"></i>
-                        </a>
-                    </td>
+            <div class="info">
+                <table id="customers">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
 
-                </tr>
+                        <th>Action</th>
+                    </tr>
 
-            </table>
+                    <tr *ngFor="let admin of admins">
+
+                        <td>{{admin.name}}</td>
+                        <td>{{admin.email}} </td>
+                        <td>{{admin.phone}} </td>
+                        <td>
+                            <a routerLink="'/admin/update-admin/' + admin.id"><i class="fas fa-edit"></i>
+                            </a>
+                            <a routerLink="'/delete-admin/' + admin.id"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
+                            <a routerLink="'/update-admin-password/' + admin.id"><i class="fas fa-key"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
         </div>
     </div>
 </div>

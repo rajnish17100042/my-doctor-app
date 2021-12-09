@@ -300,4 +300,11 @@ router.get("/registrationDetails", authenticate, (req, res) => {
   }
 });
 
+//route for Logout
+router.get("/logout", authenticate, (req, res) => {
+  // console.log("reaching to logout route");
+  res.clearCookie("accessToken");
+  res.json({ success: true, message: "Logged out successfully" });
+});
+
 module.exports = router;

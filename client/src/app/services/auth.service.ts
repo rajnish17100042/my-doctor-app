@@ -37,6 +37,13 @@ export class AuthService {
     return this.http.get<any>('/registrationDetails',{headers:headers,})
    }
 
+logout(){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/logout',{headers:headers,})
+   }
+
 
 
 

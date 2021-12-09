@@ -36,9 +36,25 @@ export class AdminDashboardComponent implements OnInit {
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
          this.router.navigate(['/login']);
       }
-  });  
+    });  
   
-  
+  }
+
+  logout(){
+     //go to backend logout route
+    this.authService.logout().subscribe(
+      data => {
+       if(data.success){
+          this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
+          this.router.navigate(['/login']);
+       }
+       else{
+            this.flashMessage.show("Something went wrong",{cssClass:'alert-danger',timeout:3000});
+
+       }
+      }
+      
+    );
   }
 
 }

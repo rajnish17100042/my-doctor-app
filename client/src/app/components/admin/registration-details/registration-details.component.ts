@@ -33,5 +33,5 @@ export class RegistrationDetailsComponent implements OnInit {
       }
   }); 
   }
-
+  
 }
