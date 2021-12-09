@@ -47,7 +47,7 @@ const routes: Routes = [
    // routing to update patient registration details 
   {
    path:'admin/update-patient/:id',
-   component:PatientRegistrationComponent,
+   component:UpdatePatientComponent,
   },
 ];
 
@@ -56,4 +56,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorRegistrationComponent,PatientRegistrationComponent]
+export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent]
