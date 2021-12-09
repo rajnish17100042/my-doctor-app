@@ -18,79 +18,85 @@ const getTableName = require("../validation/get_table_name");
 const authenticate = require("../middleware/authentication");
 
 // create route for Admin registration
-router.post("/registration/:role", (req, res) => {
-  const role = req.params.role;
-  req.role = role;
-  // console.log(req.role);
-
-  // calling function for input validation
-  const isInputValidated = validateInput(req);
-
-  console.log(isInputValidated);
-  if (!isInputValidated) {
-    res
-      .status(400)
-      .json({ success: false, message: "Please fill the data properly" });
+router.post("/registration/:role", authenticate, (req, res) => {
+  const roleFromFrontend = req.params.role;
+  req.roleFromFrontend = req.params.role;
+  // console.log(req.role);//role we get from the cookies
+  if (req.role !== "admin") {
+    return res.json({
+      success: false,
+      message: "do not have the right permission",
+    });
   } else {
-    //proceed forward after the  input validation
-    // first based on the role get table name
-    const tableName = getTableName(role);
-    // console.log(tableName);
+    // calling function for input validation
+    const isInputValidated = validateInput(req);
 
-    // before registration check if user already present
-    db.query(
-      `select email from ${tableName} where email=?`,
-      req.body.email,
-      (err, result) => {
-        if (err) {
-          // throw err;
-          return res.status(400).json({
-            success: false,
-            message: "Some error occured please registered again",
-          });
-        }
-        // console.log(result, result.length);
-        if (result.length > 0) {
-          // console.log("helo hello hello");
-          return res
-            .status(400)
-            .json({ success: false, message: "user is already registered" });
-        } else {
-          // password hashing using bcrypt
-          bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
-            if (err) {
-              // throw err;
-              return res.status(400).json({
-                success: false,
-                message: "Some error occured please registered again",
-              });
-            }
-            req.body.password = hash;
-            // console.log(req.body.password);
-            let sql = `insert into ${tableName} set ?`;
-            // delete cpassword property from req.body object
-            delete req.body.cpassword;
-            // console.log(req.body);
-            // insert the data to database
-            db.query(sql, req.body, (err, result) => {
+    console.log(isInputValidated);
+    if (!isInputValidated) {
+      res
+        .status(400)
+        .json({ success: false, message: "Please fill the data properly" });
+    } else {
+      //proceed forward after the  input validation
+      // first based on the role get table name
+      const tableName = getTableName(roleFromFrontend);
+      // console.log(tableName);
+
+      // before registration check if user already present
+      db.query(
+        `select email from ${tableName} where email=?`,
+        req.body.email,
+        (err, result) => {
+          if (err) {
+            // throw err;
+            return res.status(400).json({
+              success: false,
+              message: "Some error occured please registered again",
+            });
+          }
+          // console.log(result, result.length);
+          if (result.length > 0) {
+            // console.log("helo hello hello");
+            return res
+              .status(400)
+              .json({ success: false, message: "user is already registered" });
+          } else {
+            // password hashing using bcrypt
+            bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
               if (err) {
-                //   throw err;
+                // throw err;
                 return res.status(400).json({
                   success: false,
                   message: "Some error occured please registered again",
                 });
               }
-              // console.log(result);
+              req.body.password = hash;
+              // console.log(req.body.password);
+              let sql = `insert into ${tableName} set ?`;
+              // delete cpassword property from req.body object
+              delete req.body.cpassword;
+              // console.log(req.body);
+              // insert the data to database
+              db.query(sql, req.body, (err, result) => {
+                if (err) {
+                  //   throw err;
+                  return res.status(400).json({
+                    success: false,
+                    message: "Some error occured please registered again",
+                  });
+                }
+                // console.log(result);
 
-              return res.status(200).json({
-                success: true,
-                message: "User registedred Successfully",
+                return res.status(200).json({
+                  success: true,
+                  message: "User registedred Successfully",
+                });
               });
             });
-          });
+          }
         }
-      }
-    );
+      );
+    }
   }
 });
 
