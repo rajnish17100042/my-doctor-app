@@ -14,6 +14,9 @@ import { FlashMessagesModule } from 'flash-messages-angular';
 import { HomeComponent } from './components/home/home.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { RegistrationDetailsComponent } from './components/admin/registration-details/registration-details.component';
+import { UpdatePatientComponent } from './components/admin/update-patient/update-patient.component';
+import { UpdatePatientPasswordComponent } from './components/admin/update-patient-password/update-patient-password.component';
+import { DeletePatientComponent } from './components/admin/delete-patient/delete-patient.component';
 
 
 
@@ -26,6 +29,9 @@ import { RegistrationDetailsComponent } from './components/admin/registration-de
     HomeComponent,
     AdminDashboardComponent,
     RegistrationDetailsComponent,
+    UpdatePatientComponent,
+    UpdatePatientPasswordComponent,
+    DeletePatientComponent,
   ],
 
   imports: [

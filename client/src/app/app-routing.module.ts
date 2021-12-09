@@ -6,6 +6,7 @@ import { AdminRegistrationComponent } from './components/admin/admin-registratio
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
 import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
+import { UpdatePatientComponent } from './components/admin/update-patient/update-patient.component';
 const routes: Routes = [
   // routing for the common login page 
   {
@@ -38,9 +39,14 @@ const routes: Routes = [
    path:'admin/doctor-registration',
    component:DoctorRegistrationComponent,
   },
-   // routing for the patient appointment booking by admin 
+   // routing for the patient registration by admin 
   {
    path:'admin/patient-registration',
+   component:PatientRegistrationComponent,
+  },
+   // routing to update patient registration details 
+  {
+   path:'/admin/update-patient/:id',
    component:PatientRegistrationComponent,
   },
 ];
