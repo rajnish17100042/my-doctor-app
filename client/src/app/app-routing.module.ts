@@ -46,7 +46,7 @@ const routes: Routes = [
   },
    // routing to update patient registration details 
   {
-   path:'/admin/update-patient/:id',
+   path:'admin/update-patient/:id',
    component:PatientRegistrationComponent,
   },
 ];
