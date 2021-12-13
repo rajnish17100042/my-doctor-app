@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
 import {ValidateService} from '../../../services/validate.service';
 import {AuthService} from '../../../services/auth.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
 import {FlashMessagesService} from 'flash-messages-angular';
 
 @Component({
@@ -12,6 +12,7 @@ import {FlashMessagesService} from 'flash-messages-angular';
 })
 export class UpdatePatientComponent implements OnInit {
  public patient={
+   id:'',
    name:'',
    email:'',
    phone:'',
@@ -25,18 +26,20 @@ export class UpdatePatientComponent implements OnInit {
    password:'',
 
  };
- id:number;
+ 
 
   constructor(
     private validateService:ValidateService,
     private flashMessage:FlashMessagesService,
     private authService:AuthService,
     private router:Router,
+    private route: ActivatedRoute,
     ) { }
 
   ngOnInit() {
-    this.id=2;
+    const params = this.route.snapshot.params 
     //get all the details from the backend to display on the update page
+    console.log(params);
   }
   
 updatePatient(){
@@ -59,7 +62,7 @@ updatePatient(){
     }
 
     //send doctor data to the server
-    this.authService.updateRegistrationDetails(this.patient,role,this.id).subscribe(
+    this.authService.updateRegistrationDetails(this.patient,role).subscribe(
       data => {
        if(data.success){
           this.flashMessage.show("Appointment Successful",{cssClass:'alert-success',timeout:3000});

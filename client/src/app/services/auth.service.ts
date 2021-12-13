@@ -37,11 +37,11 @@ export class AuthService {
     return this.http.get<any>('/registrationDetails',{headers:headers,})
    }
 
- updateRegistrationDetails(dataToSend,role,id){
+ updateRegistrationDetails(dataToSend,role){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
     headers.append( "credentials", "include");
-    return this.http.post<any>('/updateRegistrationDetails/'+role+'/'+id,dataToSend,{headers:headers,})
+    return this.http.post<any>('/updateRegistrationDetails/'+role+'/'+dataToSend.id,dataToSend,{headers:headers,})
    }
    
 logout(){
