@@ -20,13 +20,13 @@
 
 
                     <tr *ngFor="let patient of patients">
-                        <td>{{patient.name}} </td>
+                        <td>{{patient.id}} </td>
                         <td>{{patient.email}} </td>
                         <td>{{patient.phone}} </td>
                         <td>{{patient.symptoms}} </td>
                         <td>{{patient.doctor}} </td>
                         <td>
-                            <a routerLink="'/admin/update-patient/' + patient.id"><i class="fas fa-edit"></i>
+                            <a routerLink="/admin/update-patient/ + patient.id"><i class="fas fa-edit"></i>
                             </a>
                             <a routerLink="'/delete-patient/' + patient.id"><i class="fas fa-trash"
                                     style="padding:0px 20px"></i></a>
