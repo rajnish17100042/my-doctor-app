@@ -37,9 +37,9 @@ export class UpdatePatientComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    const params = this.route.snapshot.params 
+    const params = this.route.snapshot.params['id'] 
     //get all the details from the backend to display on the update page
-    console.log(params);
+    console.log(params['id']);
   }
   
 updatePatient(){
