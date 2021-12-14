@@ -333,8 +333,8 @@ router.get(
             message: "some error occured",
           });
         } else if (result.length) {
-          console.log(result);
-          return res.json({ success: true, result });
+          console.log(result[0]);
+          return res.json({ success: true, result: result[0] });
         }
       });
     }
