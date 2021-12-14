@@ -12,7 +12,6 @@ import {FlashMessagesService} from 'flash-messages-angular';
 })
 export class UpdatePatientComponent implements OnInit {
  public patient={
-   id:'',
    name:'',
    email:'',
    phone:'',
@@ -23,9 +22,8 @@ export class UpdatePatientComponent implements OnInit {
    appointment_date:'',
    symptoms:'',
    doctor:'',
-   password:'',
-
- };
+   
+};
  
 
   constructor(
@@ -37,9 +35,27 @@ export class UpdatePatientComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    const params = this.route.snapshot.params['id'] 
+    const id = this.route.snapshot.params['id'];
+    const roleFromFrontend='patient'; 
     //get all the details from the backend to display on the update page
-    console.log(params);
+    // console.log(id);
+    //try to create a single route in the backend for updation,deletion,and password change based on the roles
+     this.authService.getUpdationDetails(id,roleFromFrontend).subscribe(
+      data => {
+       if(data.success){
+          this.flashMessage.show("Displaying the updation details",{cssClass:'alert-success',timeout:3000});
+          this.patient=data.result;
+          console.log(this.patient);
+       }
+       else{
+            this.flashMessage.show("Something went wrong",{cssClass:'alert-danger',timeout:3000});
+            this.router.navigate(['/login']);
+       }
+      }
+      
+    );
+   
+
   }
   
 updatePatient(){

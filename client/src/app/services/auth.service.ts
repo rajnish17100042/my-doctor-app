@@ -23,6 +23,8 @@ export class AuthService {
     headers.append( "credentials", "include");
     return this.http.post<any>('/login',user,{headers:headers,})
    }
+
+ //admin dashboard protection  
  authenticateRoute(route){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
@@ -30,11 +32,22 @@ export class AuthService {
     return this.http.get<any>('/'+route,{headers:headers,})
    }
 
+
+//calling backend routes to display all the registration details of patient,doctor and admin on the admin dashboard
  getRegistrationDetails(){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
     headers.append( "credentials", "include");
     return this.http.get<any>('/registrationDetails',{headers:headers,})
+   }
+
+
+//routes to get the  details from the database to display on the update page
+   getUpdationDetails(id,roleFromFrontend){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/updationDetails/'+id+'/'+roleFromFrontend,{headers:headers,})
    }
 
  updateRegistrationDetails(dataToSend,role){

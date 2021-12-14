@@ -17,7 +17,7 @@ const validateInput = require("../validation/input_data_validation");
 const getTableName = require("../validation/get_table_name");
 const authenticate = require("../middleware/authentication");
 
-// create route for Admin registration
+// create route for  registration for admins,doctors and patients
 router.post("/registration/:role", authenticate, (req, res) => {
   const roleFromFrontend = req.params.role;
   req.roleFromFrontend = req.params.role;
@@ -300,6 +300,46 @@ router.get("/registrationDetails", authenticate, (req, res) => {
   }
 });
 
+//route to get the details doctor, patient, admin to display on th eupdation page
+router.get(
+  "/updationdetails/:id/:roleFromFrontend",
+  authenticate,
+  (req, res) => {
+    // console.log(req.role);
+    const id = req.params.id;
+    const roleFromFrontend = req.params.roleFromFrontend;
+    console.log(req.role, id, componentType);
+    let tableName;
+
+    // give access only to patients,doctors and admins to get the details for the updation
+    if (
+      req.role !== "admin" &&
+      req.role !== "doctor" &&
+      req.role !== "patient"
+    ) {
+      return res.json({
+        success: false,
+        message: "don't have the proper access",
+      });
+    } else {
+      // get the table name based on the data whether the update is for admin,doctor or patient
+      tableName = getTableName(roleFromFrontend);
+      const sql = `select * from ${tableName} where id=?`;
+      db.query(sql, id, (err, result) => {
+        if (err || !result.length) {
+          console.log(err);
+          return res.json({
+            success: false,
+            message: "some error occured",
+          });
+        } else if (result.length) {
+          console.log(result);
+          return res.json({ success: true, result });
+        }
+      });
+    }
+  }
+);
 //route for Logout
 router.get("/logout", authenticate, (req, res) => {
   // console.log("reaching to logout route");
