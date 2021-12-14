@@ -308,7 +308,7 @@ router.get(
     // console.log(req.role);
     const id = req.params.id;
     const roleFromFrontend = req.params.roleFromFrontend;
-    console.log(req.role, id, componentType);
+    console.log(req.role, id);
     let tableName;
 
     // give access only to patients,doctors and admins to get the details for the updation
