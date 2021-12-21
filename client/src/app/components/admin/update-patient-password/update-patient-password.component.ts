@@ -35,12 +35,12 @@ export class UpdatePatientPasswordComponent implements OnInit {
     const role='patient';
     // console.log(this.password,this.password.currentPassword,this.password.newPassword,this.password.confirmNewPassword);
       //required all the fields
-    // if(!this.validateService.validatePassword(this.password)){
-    //   // window.alert("Please fill in all the fields");
+    if(!this.validateService.validatePassword(this.password)){
+      // window.alert("Please fill in all the fields");
     
-    //   this.flashMessage.show("Please fill in all the fields",{cssClass:'alert-danger',timeout:3000});
-    //   return false;
-    // }
+      this.flashMessage.show("Please fill in all the fields",{cssClass:'alert-danger',timeout:3000});
+      return false;
+    }
    
 
     //send  data to the server
