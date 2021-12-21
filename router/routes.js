@@ -347,7 +347,7 @@ router.patch(
   authenticate,
   (req, res) => {
     //first based on the token stored in the cookie check the role only patient, doctor and admin roles are allowed
-    console.log(req.params, req.role);
+    console.log(req.body, req.params, req.role);
   }
 );
 //route for Logout
