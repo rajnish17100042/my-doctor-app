@@ -31,7 +31,7 @@ export class RegistrationDetailsComponent implements OnInit {
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
          this.router.navigate(['/login']);
       }
-  }); 
+    }); 
   }
   
   deleteUser(role,id){

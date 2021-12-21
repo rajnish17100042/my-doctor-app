@@ -27,6 +27,14 @@ export class AuthService {
     return this.http.post<any>('/login',user,{headers:headers,})
    }
 
+//check if user is already logged in if so the redirect to the dashboard 
+ checkAlreadyLogin(){
+   let headers=new HttpHeaders();
+   headers.append('Content-Type','application/json');
+   headers.append( "credentials", "include");
+   return this.http.get<any>('/checkAlreadyLogin',{headers:headers,})
+}
+
  //admin dashboard protection  
  authenticateRoute(route){
     let headers=new HttpHeaders();
