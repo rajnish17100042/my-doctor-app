@@ -381,11 +381,19 @@ router.patch(
           if (err) {
             console.log(err);
             return res.json({
-              success1: false,
+              success: false,
+              message: "some error occured!!",
+            });
+          } else if (!result) {
+            return res.json({
+              success: false,
               message: "some error occured!!",
             });
           } else {
-            console.log(result, result.length);
+            return res.json({
+              success1: true,
+              message: "details updated successfully!!",
+            });
           }
         });
       }

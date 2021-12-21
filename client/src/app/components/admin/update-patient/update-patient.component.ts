@@ -64,7 +64,7 @@ updatePatient(){
     // console.log(this.name);
     
     const role='patient';
-    console.log("These are the patient details: "+this.patient.name,this.patient.email,this.patient.phone,this.patient.address,this.patient.city,this.patient.state,this.patient.pincode,this.patient.appointment_date,this.patient.symptoms,this.patient.doctor);
+    // console.log("These are the patient details: "+this.patient.name,this.patient.email,this.patient.phone,this.patient.address,this.patient.city,this.patient.state,this.patient.pincode,this.patient.appointment_date,this.patient.symptoms,this.patient.doctor);
       //required all the fields
     if(!this.validateService.validateUpdationDetails(this.patient,role)){
       // window.alert("Please fill in all the fields");
@@ -83,11 +83,11 @@ updatePatient(){
     this.authService.updateRegistrationDetails(this.patient,role).subscribe(
       data => {
        if(data.success){
-          this.flashMessage.show("Appointment Successful",{cssClass:'alert-success',timeout:3000});
+          this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
           this.router.navigate(['/login']);
        }
        else{
-            this.flashMessage.show("Something went wrong",{cssClass:'alert-danger',timeout:3000});
+            this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
 
        }
       }
