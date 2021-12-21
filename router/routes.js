@@ -475,7 +475,7 @@ router.patch(
 );
 
 //route to delete user
-router.delete("/deleteUser/:roelFromFrontend/:id", authenticate, (req, res) => {
+router.delete("/deleteUser/:roleFromFrontend/:id", authenticate, (req, res) => {
   // get the role and id sent from the front-end
   const { roleFromFrontend, id } = req.params;
   // get the current role who is logged in
