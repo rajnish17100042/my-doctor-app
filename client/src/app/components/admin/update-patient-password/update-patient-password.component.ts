@@ -31,7 +31,7 @@ export class UpdatePatientPasswordComponent implements OnInit {
     // window.alert("Form is submitting");
     // console.log(this.name);
     const id = this.route.snapshot.params['id'];
-    console.log(id);
+    // console.log(id);
     const role='patient';
     // console.log(this.password,this.password.currentPassword,this.password.newPassword,this.password.confirmNewPassword);
       //required all the fields

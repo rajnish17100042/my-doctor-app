@@ -64,14 +64,14 @@ validateUpdationDetails(dataToSend,role){
 
   // function to validate password details
     validatePassword(password){
-      console.log(password);
+      // console.log(password);
      if(!password.currentPassword||!password.newPassword||!password.confirmNewPassword){
-      console.log("empty values");
+      // console.log("empty values");
       return false;
      }
   
     else if(password.newPassword===password.confirmNewPassword){ 
-      console.log("password match");
+      // console.log("password match");
       // console.log("else part");
       return true;
     }
