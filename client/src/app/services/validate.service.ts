@@ -67,7 +67,7 @@ validateUpdationDetails(dataToSend,role){
      if(!password.currentPassword||!password.newPassword||password.confirmNewPassword){
       // console.log("user checking");
       return false;
-    }else if(password.newPassword!==password.confirmNewPassword){
+    }else if(!(password.newPassword===password.confirmNewPassword)){
       return false;
     }
   

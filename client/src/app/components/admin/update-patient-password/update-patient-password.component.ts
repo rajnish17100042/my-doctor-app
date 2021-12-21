@@ -33,7 +33,7 @@ export class UpdatePatientPasswordComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     console.log(id);
     const role='patient';
-    console.log(this.password,this.password.currentPassword,this.password.newPassword,this.password.confirmNewPassword);
+    // console.log(this.password,this.password.currentPassword,this.password.newPassword,this.password.confirmNewPassword);
       //required all the fields
     if(!this.validateService.validatePassword(this.password)){
       // window.alert("Please fill in all the fields");
