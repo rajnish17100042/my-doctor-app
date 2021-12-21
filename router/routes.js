@@ -477,7 +477,7 @@ router.patch(
 //route to delete user
 router.delete("/deleteUser/:roelFromFrontend/:id", authenticate, (req, res) => {
   // get the role and id sent from the front-end
-  const { roelFromFrontend, id } = req.params;
+  const { roleFromFrontend, id } = req.params;
   // get the current role who is logged in
   console.log(req.role);
   // delete feature is only available for admin
