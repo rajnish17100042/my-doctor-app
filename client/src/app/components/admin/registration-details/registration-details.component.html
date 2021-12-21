@@ -26,7 +26,7 @@
                         <td>{{patient.symptoms}} </td>
                         <td>{{patient.doctor}} </td>
                         <td>
-                            <a [routerLink]="['/admin/update-patient/' , patient.id]"><i class="fas fa-edit"></i>
+                            <a [routerLink]="['/update-patient/' , patient.id]"><i class="fas fa-edit"></i>
                             </a>
                             <a [routerLink]="['/delete-patient/' + patient.id]"><i class="fas fa-trash"
                                     style="padding:0px 20px"></i></a>
@@ -63,7 +63,7 @@
                         <td>{{doctor.specialisation}} </td>
                         <td>{{doctor.experience}} </td>
                         <td>
-                            <a [routerLink]="['/admin/update-doctor/' + doctor.id]"><i class="fas fa-edit"></i>
+                            <a [routerLink]="['/update-doctor/' + doctor.id]"><i class="fas fa-edit"></i>
                             </a>
                             <a [routerLink]="['/delete-doctor/' + doctor.id]"><i class="fas fa-trash"
                                     style="padding:0px 20px"></i></a>
