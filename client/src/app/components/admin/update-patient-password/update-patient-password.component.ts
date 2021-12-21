@@ -11,7 +11,7 @@ import {FlashMessagesService} from 'flash-messages-angular';
 })
 export class UpdatePatientPasswordComponent implements OnInit {
    public password={
-   currentPassword:'',
+   currentPassword:'this',
    newPassword:'',
    confirmNewPassword:'',
 };
