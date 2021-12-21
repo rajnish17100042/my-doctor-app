@@ -1,33 +1,38 @@
-<form (submit)="updateDoctor()">
-    <div class="container">
-        <h1>Update Doctor Details</h1>
-        <p>Please fill in this form to update the details of doctor</p>
-        <hr />
+<div *ngIf="doctor">
+    <form (submit)="updateDoctor()">
+        <div class="container">
+            <h1>Update Doctor Details</h1>
+            <p>Please fill in this form to update the details of doctor</p>
+            <hr />
 
-        <input type="text" [(ngModel)]="doctor.name" name="doctor.name" placeholder="Enter Name " required />
-        <input type="email" [(ngModel)]="doctor.email" name="doctor.email" placeholder="Enter Email" required />
-        <input type="tel" [(ngModel)]="doctor.phone" name="doctor.phone" placeholder="Enter Mobile Number" required />
-        <input type="text" [(ngModel)]="doctor.address" name="doctor.address" placeholder="Enter Address" required />
-        <input type="text" [(ngModel)]="doctor.city" name="doctor.city" placeholder="Enter City Name" required />
-        <input type="text" [(ngModel)]="doctor.state" name="doctor.state" placeholder="Enter State" required />
-        <input type="text" [(ngModel)]="doctor.pincode" name="doctor.pincode" placeholder="Enter Pincode" required />
+            <input type="text" [(ngModel)]="doctor.name" name="doctor.name" placeholder="Enter Name " required />
+            <input type="email" [(ngModel)]="doctor.email" name="doctor.email" placeholder="Enter Email" required />
+            <input type="tel" [(ngModel)]="doctor.phone" name="doctor.phone" placeholder="Enter Mobile Number"
+                required />
+            <input type="text" [(ngModel)]="doctor.address" name="doctor.address" placeholder="Enter Address"
+                required />
+            <input type="text" [(ngModel)]="doctor.city" name="doctor.city" placeholder="Enter City Name" required />
+            <input type="text" [(ngModel)]="doctor.state" name="doctor.state" placeholder="Enter State" required />
+            <input type="text" [(ngModel)]="doctor.pincode" name="doctor.pincode" placeholder="Enter Pincode"
+                required />
 
-        <input type="date" [(ngModel)]="doctor.joining_date" name="doctor.joining_date"
-            placeholder="Enter date of joining" required />
-        <input type="text" [(ngModel)]="doctor.specialisation" name="doctor.specialisation"
-            placeholder="Enter Specialisation of the Doctor" required>
+            <input type="date" [(ngModel)]="doctor.joining_date" name="doctor.joining_date"
+                placeholder="Enter date of joining" required />
+            <input type="text" [(ngModel)]="doctor.specialisation" name="doctor.specialisation"
+                placeholder="Enter Specialisation of the Doctor" required>
 
-        <input type="text" [(ngModel)]="doctor.experience" name="doctor.experience"
-            placeholder="Enter Experience of the Doctor" required>
-        <label for="doctor">Select your Doctor</label>
-
+            <input type="text" [(ngModel)]="doctor.experience" name="doctor.experience"
+                placeholder="Enter Experience of the Doctor" required>
 
 
 
-        <hr />
 
-        <button type="submit" class="registerbtn">
-            Update
-        </button>
-    </div>
-</form>
+
+            <hr />
+
+            <button type="submit" class="registerbtn">
+                Update
+            </button>
+        </div>
+    </form>
+</div>
