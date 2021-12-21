@@ -38,7 +38,7 @@ export class UpdatePatientPasswordComponent implements OnInit {
     if(!this.validateService.validatePassword(this.password)){
       // window.alert("Please fill in all the fields");
     
-      this.flashMessage.show("Please fill in all the fields",{cssClass:'alert-danger',timeout:3000});
+      this.flashMessage.show("Please fill in all the fields and Both the password should match",{cssClass:'alert-danger',timeout:3000});
       return false;
     }
    
