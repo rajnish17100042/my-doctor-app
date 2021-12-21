@@ -60,6 +60,24 @@ validateUpdationDetails(dataToSend,role){
       return true;
     }
   }
+
+
+  // function to validate password details
+    validatePassword(password){
+     if(!password.currentPassword||!password.newPassword||password.confirmNewPassword){
+      // console.log("user checking");
+      return false;
+    }else if(password.newPassword!==password.confirmNewPassword){
+      return false;
+    }
+  
+    else{ 
+      // console.log("else part");
+      return true;
+    }
+  }
+
+
   validateLoginData(user){
      if(!user.password||!user.role){
       // console.log("user checking");

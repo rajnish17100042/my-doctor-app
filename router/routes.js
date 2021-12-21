@@ -400,6 +400,80 @@ router.patch(
     }
   }
 );
+
+//route to update password of patients , doctors and admins
+router.patch(
+  "updatePassword/:roleFromFrontend/:id",
+  authenticate,
+  async (req, res) => {
+    const data = req.body;
+    const { roleFromFrontend, id } = req.params;
+    const tableName = getTableName(roleFromFrontend);
+
+    // console.log(data);
+    const { currentPassword, newPassword } = data;
+    try {
+      // first check if the password saved in the database matches with the current password
+      const sql = `select password from ${tableName} where id=${id}`;
+      db.query(sql, async (err, result) => {
+        if (err) {
+          // throw err
+          return res.json({ success: false, message: "Some Error Occured!" });
+        } else {
+          // console.log(result);
+          const dbpassword = result[0].password;
+          // console.log(dbpassword);
+          // now compare the current password and the password stored in database
+          const passwordMatch = await bcrypt.compare(
+            currentPassword,
+            dbpassword
+          );
+          console.log(passwordMatch);
+          if (!passwordMatch) {
+            return res.json({ success: false, message: "Some Error Occured!" });
+          } else {
+            // update the password
+            // first password hashing  is done
+            const hash = await bcrypt.hash(newPassword, saltRounds);
+            // console.log(hash);
+            if (!hash) {
+              return res.json({
+                success: false,
+                message: "Some Error Occured!",
+              });
+            } else {
+              // store hash in database with proper id matching
+              const sql = `update ${tableName} set password=? where id=${id}`;
+              db.query(sql, hash, (err, result) => {
+                if (err) {
+                  // throw err
+                  return res.json({
+                    success: false,
+                    message: "Some Error Occured!",
+                  });
+                } else if (!result) {
+                  return res.json({
+                    success: false,
+                    message: "Some Error Occured!",
+                  });
+                } else {
+                  return res.json({
+                    success: true,
+                    message: "Password Updated Successfully!!",
+                  });
+                }
+              });
+            }
+          }
+        }
+      });
+    } catch (err) {
+      // throw err
+      return res.status(400).json({ error: "Some Error Occured!" });
+    }
+  }
+);
+
 //route for Logout
 router.get("/logout", authenticate, (req, res) => {
   // console.log("reaching to logout route");
