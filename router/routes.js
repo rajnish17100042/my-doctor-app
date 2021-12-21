@@ -420,9 +420,9 @@ router.patch(
           // throw err
           return res.json({ success: false, message: "Some Error Occured!" });
         } else {
-          // console.log(result);
+          console.log(result);
           const dbpassword = result[0].password;
-          // console.log(dbpassword);
+          console.log(dbpassword);
           // now compare the current password and the password stored in database
           const passwordMatch = await bcrypt.compare(
             currentPassword,
