@@ -474,6 +474,45 @@ router.patch(
   }
 );
 
+//route to delete user
+router.delete("/deleteUser/:roelFromFrontend/:id", authenticate, (req, res) => {
+  // get the role and id sent from the front-end
+  const { roelFromFrontend, id } = req.params;
+  // get the current role who is logged in
+  console.log(req.role);
+  // delete feature is only available for admin
+  if (req.role !== "admin") {
+    return res.json({
+      success: false,
+      message: "you do not have the proper permission",
+    });
+  } else if (req.role === "admin") {
+    // get the table name
+    let tableName = getTableName(roleFromFrontend);
+    console.log(tableName);
+    const sql = `delete from ${tableName} where id=?`;
+    db.query(sql, id, (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.json({
+          success: false,
+          message: "Some error occured!!",
+        });
+      } else if (!result) {
+        return res.json({
+          success: false,
+          message: "Some error occured!!",
+        });
+      } else if (result) {
+        console.log(result);
+        return res.json({
+          success: true,
+          message: "User Successfully Deleted !!",
+        });
+      }
+    });
+  }
+});
 //route for Logout
 router.get("/logout", authenticate, (req, res) => {
   // console.log("reaching to logout route");

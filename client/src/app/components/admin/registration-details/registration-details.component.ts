@@ -35,15 +35,28 @@ export class RegistrationDetailsComponent implements OnInit {
   }
   
   deleteUser(role,id){
-
+   
     let finaldelete = confirm("want to delete the user ??");
 
     if (finaldelete == true) {
-        
-     console.log(role,id);
-       
-    }
+        //  console.log(role,id);
+      this.authService.deleteUser(role,id).subscribe(
+        data => {
+        if(data.success){
+            this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
+          
+        }
+        else{
+              this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
+
+        }
+        }
+      
+      );
+    } 
+      
+  }
     
 
-  }
+  
 }
