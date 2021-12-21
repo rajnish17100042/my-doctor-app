@@ -34,4 +34,8 @@ export class RegistrationDetailsComponent implements OnInit {
   }); 
   }
   
+  deleteUser(role,id){
+    console.log(role,id);
+
+  }
 }
