@@ -403,7 +403,7 @@ router.patch(
 
 //route to update password of patients , doctors and admins
 router.patch(
-  "updatePassword/:roleFromFrontend/:id",
+  "/updatePassword/:roleFromFrontend/:id",
   authenticate,
   async (req, res) => {
     const data = req.body;
