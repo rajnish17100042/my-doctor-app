@@ -343,11 +343,53 @@ router.get(
 
 //route to update the general details excluding password of patients, doctors and admins
 router.patch(
-  "/updateRegistrationDetails/:role/:id",
+  "/updateRegistrationDetails/:roleFromFrontend/:id",
   authenticate,
   (req, res) => {
+    //  console.log(req.body, req.params, req.role);
+    const id = req.params.id;
+    const roleFromFrontend = req.params.roleFromFrontend;
+
+    console.log(req.body);
     //first based on the token stored in the cookie check the role only patient, doctor and admin roles are allowed
-    console.log(req.body, req.params, req.role);
+    if (
+      req.role !== "admin" &&
+      req.role !== "doctor" &&
+      req.role !== "patient"
+    ) {
+      return res.json({
+        success: false,
+        message: "you do not have permission!!",
+      });
+    } else {
+      // server side validation
+      req.roleFromFrontend = roleFromFrontend;
+      // calling function for input validation
+      const isInputValidated = validateInput(req);
+      if (!isInputValidated) {
+        res.json({ success: false, message: "Please fill the data properly" });
+      } else {
+        //proceed forward after the  input validation
+        //  delete password and registered_at property from req.body object
+        delete req.body.password;
+        delete req.body.registered_at;
+        // first based on the role get table name
+        const tableName = getTableName(roleFromFrontend);
+        // console.log(tableName);
+        const sql = `update ${tableName} set ? where id=?`;
+        db.query(sql, [req.body, id], (err, result) => {
+          if (err) {
+            console.log(err);
+            return res.json({
+              success1: false,
+              message: "some error occured!!",
+            });
+          } else {
+            console.log(result, result.length);
+          }
+        });
+      }
+    }
   }
 );
 //route for Logout
