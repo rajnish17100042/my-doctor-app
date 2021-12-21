@@ -64,7 +64,7 @@ updatePatient(){
     // console.log(this.name);
     
     const role='patient';
-    console.log("These are the patient details: "+this.patient);
+    console.log("These are the patient details: "+this.patient.name,this.patient.email,this.patient.phone,this.patient.address,this.patient.city,this.patient.state,this.patient.pincode,this.patient.appointment_date,this.patient.symptoms,this.patient.doctor);
       //required all the fields
     if(!this.validateService.validateUpdationDetails(this.patient,role)){
       // window.alert("Please fill in all the fields");
