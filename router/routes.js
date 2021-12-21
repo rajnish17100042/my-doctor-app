@@ -489,6 +489,7 @@ router.delete("/deleteUser/:roelFromFrontend/:id", authenticate, (req, res) => {
   } else if (req.role === "admin") {
     // get the table name
     let tableName = getTableName(roleFromFrontend);
+    console.log("TableNAme is:");
     console.log(tableName);
     const sql = `delete from ${tableName} where id=?`;
     db.query(sql, id, (err, result) => {
