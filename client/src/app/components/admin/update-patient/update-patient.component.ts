@@ -64,11 +64,12 @@ updatePatient(){
     // console.log(this.name);
     
     const role='patient';
-
+    console.log("These are the patient details: "+this.patient);
       //required all the fields
-    if(!this.validateService.validateRegistration(this.patient,role)){
+    if(!this.validateService.validateUpdationDetails(this.patient,role)){
       // window.alert("Please fill in all the fields");
-      this.flashMessage.show("Please fill in all the fields also both the password should match",{cssClass:'alert-danger',timeout:3000});
+    
+      this.flashMessage.show("Please fill in all the fields",{cssClass:'alert-danger',timeout:3000});
       return false;
     }
     //validate email

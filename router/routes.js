@@ -302,7 +302,7 @@ router.get("/registrationDetails", authenticate, (req, res) => {
 
 //route to get the details doctor, patient, admin to display on th eupdation page
 router.get(
-  "/updationdetails/:id/:roleFromFrontend",
+  "/updationDetails/:id/:roleFromFrontend",
   authenticate,
   (req, res) => {
     // console.log(req.role);

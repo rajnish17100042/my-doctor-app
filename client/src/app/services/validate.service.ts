@@ -37,6 +37,7 @@ export class ValidateService {
 // function to validate the data filled in the update page  
 validateUpdationDetails(dataToSend,role){
 // if role is patient then do some extra data validation
+
     if(role==='patient' && (!dataToSend.appointment_date||!dataToSend.symptoms||!dataToSend.doctor)){
       // console.log("patient role");
      return false;
