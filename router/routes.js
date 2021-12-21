@@ -31,7 +31,7 @@ router.post("/registration/:role", authenticate, (req, res) => {
     // calling function for input validation
     const isInputValidated = validateInput(req);
 
-    console.log(isInputValidated);
+    // console.log(isInputValidated);
     if (!isInputValidated) {
       res
         .status(400)
@@ -112,7 +112,7 @@ router.post("/login", (req, res) => {
   // console.log(req);
   let { email, password, role } = req.body;
   const data = req.body;
-  console.log(data);
+  // console.log(data);
 
   // server side validation
   if (!email || !password || !role) {
@@ -123,23 +123,23 @@ router.post("/login", (req, res) => {
   }
   // now based on the role choose the table for student,teacher or admin
   tableName = getTableName(role);
-  console.log(tableName);
+  // console.log(tableName);
 
   //  first  search the user in the database with the help of email and take only email and password, will need later to generate payload for jwt and passowrd verification
   const sql = `select email,password from ${tableName} where email=?`;
   db.query(sql, email, async (err, result) => {
     // if user is not found then the result will be an empty array
-    console.log(result);
+    // console.log(result);
     if (err) {
       //  throw err;
-      console.log(err);
+      // console.log(err);
       return res.json({
         success: false,
         message: "Some error occured please try again",
       });
     }
     if (!result.length) {
-      console.log(result.length);
+      // console.log(result.length);
       return res.json({
         success: false,
         message: "Some error occured please try again",
@@ -149,15 +149,15 @@ router.post("/login", (req, res) => {
       dbemail = result[0].email;
     }
 
-    console.log("User found checking password");
+    // console.log("User found checking password");
     try {
       // use the password retrieved from the database in the above query
-      console.log(dbpassword);
+      // console.log(dbpassword);
       // now compare the password using bcrypt  ...password===dbpassword
       const passwordMatch = await bcrypt.compare(password, dbpassword); //returns true or false
-      console.log(passwordMatch);
+      // console.log(passwordMatch);
       if (!passwordMatch) {
-        console.log("invalid credentials");
+        // console.log("invalid credentials");
         return res.json({
           success: false,
           message: "Invalid Credentials",
@@ -166,23 +166,23 @@ router.post("/login", (req, res) => {
       // if every thing is fine then genetate a  token for the user ...jwt authentication and store it in the cookie for access the protected routed
 
       // checking if role variable is accessed here
-      console.log(role);
+      // console.log(role);
       const payload = {
         email: dbemail,
         password: dbpassword,
         role,
       };
-      console.log(payload);
+      // console.log(payload);
       jwt.sign({ payload }, secretKey, (err, token) => {
         if (err) {
           // throw err;
-          console.log(err);
+          // console.log(err);
           return res.json({
             success: false,
             message: "Some error occured please try again",
           });
         }
-        console.log(token);
+        // console.log(token);
 
         res.cookie("accessToken", token, {
           expiresIn: "15min",
@@ -191,7 +191,7 @@ router.post("/login", (req, res) => {
 
         //if cookie is not workig the store token in the browser local storage
         // window.localStorage.setItem("token", token);
-        console.log(token);
+        // console.log(token);
         return res.status(200).json({
           success: true,
           token: token,
@@ -199,7 +199,7 @@ router.post("/login", (req, res) => {
         });
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       return res.json({
         success: false,
         message: "Some error occured please try again",
@@ -212,7 +212,7 @@ router.post("/login", (req, res) => {
 
 // route for admin dashboard
 router.get("/adminDashboard", authenticate, (req, res) => {
-  console.log("Hello");
+  // console.log("Hello");
   // double checking
   if (req.role !== "admin") {
     return res.json({
@@ -221,7 +221,7 @@ router.get("/adminDashboard", authenticate, (req, res) => {
     });
   } else {
     const adminData = req.user;
-    console.log(adminData[0]);
+    // console.log(adminData[0]);
     return res.json({ success: true, adminData: adminData[0] });
   }
 });
@@ -308,7 +308,7 @@ router.get(
     // console.log(req.role);
     const id = req.params.id;
     const roleFromFrontend = req.params.roleFromFrontend;
-    console.log(req.role, id);
+    // console.log(req.role, id);
     let tableName;
 
     // give access only to patients,doctors and admins to get the details for the updation
@@ -327,13 +327,13 @@ router.get(
       const sql = `select * from ${tableName} where id=?`;
       db.query(sql, id, (err, result) => {
         if (err || !result.length) {
-          console.log(err);
+          // console.log(err);
           return res.json({
             success: false,
             message: "some error occured",
           });
         } else if (result.length) {
-          console.log(result[0]);
+          // console.log(result[0]);
           return res.json({ success: true, result: result[0] });
         }
       });
@@ -350,7 +350,7 @@ router.patch(
     const id = req.params.id;
     const roleFromFrontend = req.params.roleFromFrontend;
 
-    console.log(req.body);
+    // console.log(req.body);
     //first based on the token stored in the cookie check the role only patient, doctor and admin roles are allowed
     if (
       req.role !== "admin" &&
@@ -379,7 +379,7 @@ router.patch(
         const sql = `update ${tableName} set ? where id=?`;
         db.query(sql, [req.body, id], (err, result) => {
           if (err) {
-            console.log(err);
+            // console.log(err);
             return res.json({
               success: false,
               message: "some error occured!!",
@@ -391,7 +391,7 @@ router.patch(
             });
           } else {
             return res.json({
-              success1: true,
+              success: true,
               message: "details updated successfully!!",
             });
           }
