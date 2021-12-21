@@ -1,0 +1,26 @@
+<div *ngIf="admin">
+    <form (submit)="updateAdmin()">
+        <div class="container">
+            <h1>Update Admin Details</h1>
+            <p>Please fill in this form to update the details of Admin</p>
+            <hr />
+
+            <input type="text" [(ngModel)]="admin.name" name="admin.name" placeholder="Enter Name " required />
+            <input type="email" [(ngModel)]="admin.email" name="admin.email" placeholder="Enter Email" required />
+            <input type="tel" [(ngModel)]="admin.phone" name="admin.phone" placeholder="Enter Mobile Number" required />
+            <input type="text" [(ngModel)]="admin.address" name="admin.address" placeholder="Enter Address" required />
+            <input type="text" [(ngModel)]="admin.city" name="admin.city" placeholder="Enter City Name" required />
+            <input type="text" [(ngModel)]="admin.state" name="admin.state" placeholder="Enter State" required />
+            <input type="text" [(ngModel)]="admin.pincode" name="admin.pincode" placeholder="Enter Pincode" required />
+
+            <input type="date" [(ngModel)]="admin.joining_date" name="admin.joining_date"
+                placeholder="Enter date of joining" required />
+
+            <hr />
+
+            <button type="submit" class="registerbtn">
+                Update
+            </button>
+        </div>
+    </form>
+</div>

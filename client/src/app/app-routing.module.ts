@@ -8,6 +8,7 @@ import { DoctorRegistrationComponent } from './components/admin/doctor-registrat
 import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
 import { UpdatePatientComponent } from './components/admin/update-patient/update-patient.component';
 import { UpdateDoctorComponent } from './components/admin/update-doctor/update-doctor.component';
+import { UpdateAdminComponent } from './components/admin/update-admin/update-admin.component';
 const routes: Routes = [
   // routing for the common login page 
   {
@@ -55,6 +56,11 @@ const routes: Routes = [
    path:'update-doctor/:id',
    component:UpdateDoctorComponent,
   },
+   // routing to update admin registration details 
+  {
+   path:'admin/update-admin/:id',
+   component:UpdateAdminComponent,
+  },
 ];
 
 @NgModule({
@@ -62,4 +68,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent]
+export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent]
