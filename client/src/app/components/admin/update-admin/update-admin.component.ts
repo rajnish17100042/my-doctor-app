@@ -56,9 +56,10 @@ export class UpdateAdminComponent implements OnInit {
 
 
   updateAdmin(){
-    // window.alert("Form is submitting");
-    // console.log(this.name);
     
+    console.log("These are the admin details: "+this.admin.name,this.admin.email,this.admin.phone,this.admin.address,this.admin.city,this.admin.state,this.admin.pincode,this.admin.joining_date);
+
+      //required all the fields
     const role='doctor';
     
       //required all the fields
