@@ -35,7 +35,15 @@ export class RegistrationDetailsComponent implements OnInit {
   }
   
   deleteUser(role,id){
-    console.log(role,id);
+
+    let finaldelete = confirm("want to delete the user ??");
+
+    if (finaldelete == true) {
+        
+     console.log(role,id);
+       
+    }
+    
 
   }
 }

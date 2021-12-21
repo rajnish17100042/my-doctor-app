@@ -30,8 +30,8 @@
                             </a>
                             <a [routerLink]="['/update-patient-password/' + patient.id]"><i class="fas fa-key"></i>
                             </a>
-                            <button (click)="deleteUser(patient,patient.id)"><i class="fas fa-trash"
-                                    style="padding:0px 20px"></i></button>
+                            <a (click)="deleteUser('patient',patient.id)"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
 
                         </td>
 
@@ -68,8 +68,8 @@
                             </a>
                             <a [routerLink]="['/update-doctor-password/' + doctor.id]"><i class="fas fa-key"></i>
                             </a>
-                            <button (click)="deleteUser(doctor,doctor.id)"><i class="fas fa-trash"
-                                    style="padding:0px 20px"></i></button>
+                            <a (click)="deleteUser('doctor',doctor.id)"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
 
                         </td>
 
@@ -104,8 +104,8 @@
                             </a>
                             <a [routerLink]="['/admin/update-admin-password/' + admin.id]"><i class="fas fa-key"></i>
                             </a>
-                            <button (click)="deleteUser(admin,admin.id)"><i class="fas fa-trash"
-                                    style="padding:0px 20px"></i></button>
+                            <a (click)="deleteUser('admin',admin.id)"><i class="fas fa-trash"
+                                    style="padding:0px 20px"></i></a>
 
                         </td>
 
