@@ -57,10 +57,10 @@ export class UpdateAdminComponent implements OnInit {
 
   updateAdmin(){
     
-    console.log("These are the admin details: "+this.admin.name,this.admin.email,this.admin.phone,this.admin.address,this.admin.city,this.admin.state,this.admin.pincode,this.admin.joining_date);
+    // console.log("These are the admin details: "+this.admin.name,this.admin.email,this.admin.phone,this.admin.address,this.admin.city,this.admin.state,this.admin.pincode,this.admin.joining_date);
 
       //required all the fields
-    const role='doctor';
+    const role='admin';
     
       //required all the fields
     if(!this.validateService.validateUpdationDetails(this.admin,role)){
