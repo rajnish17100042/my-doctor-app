@@ -22,10 +22,11 @@ export class UpdatePatientComponent implements OnInit {
    appointment_date:'',
    symptoms:'',
    doctor:'',
+  
    
 };
  
-
+  
   constructor(
     private validateService:ValidateService,
     private flashMessage:FlashMessagesService,

@@ -9,7 +9,9 @@ export class AuthService {
   authToken:any;
   user:any;
   constructor(private http:HttpClient) { }
+  
 
+//   sending the registration data of patients, doctors and admins
   sendDataToServer(dataToSend,role){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
@@ -17,6 +19,7 @@ export class AuthService {
 
   }
 
+  // sending data to login route in the backend to authenticate the user and to generate the JWT access token
    authenticateUser(user){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
@@ -50,13 +53,15 @@ export class AuthService {
     return this.http.get<any>('/updationDetails/'+id+'/'+roleFromFrontend,{headers:headers,})
    }
 
+//data sending to the backend for updation of general details excluding password 
  updateRegistrationDetails(dataToSend,role){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
     headers.append( "credentials", "include");
-    return this.http.post<any>('/updateRegistrationDetails/'+role+'/'+dataToSend.id,dataToSend,{headers:headers,})
+    return this.http.patch<any>('/updateRegistrationDetails/'+role+'/'+dataToSend.id,dataToSend,{headers:headers,})
    }
-   
+
+// logging out the user   
 logout(){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');

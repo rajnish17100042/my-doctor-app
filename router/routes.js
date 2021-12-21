@@ -340,6 +340,16 @@ router.get(
     }
   }
 );
+
+//route to update the general details excluding password of patients, doctors and admins
+router.patch(
+  "/updateRegistrationDetails/:role/:id",
+  authenticate,
+  (req, res) => {
+    //first based on the token stored in the cookie check the role only patient, doctor and admin roles are allowed
+    console.log(req.body, req.params, req.role);
+  }
+);
 //route for Logout
 router.get("/logout", authenticate, (req, res) => {
   // console.log("reaching to logout route");

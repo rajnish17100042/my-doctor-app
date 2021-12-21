@@ -7,10 +7,7 @@ export class ValidateService {
 
   constructor() { }
   validateRegistration(dataToSend,role){
-
-    
-
- // if role is patient then do some extra data validation
+// if role is patient then do some extra data validation
     if(role==='patient' && (!dataToSend.appointment_date||!dataToSend.symptoms||!dataToSend.doctor)){
       // console.log("patient role");
      return false;
@@ -37,6 +34,31 @@ export class ValidateService {
     }
   }
 
+// function to validate the data filled in the update page  
+validateUpdationDetails(dataToSend,role){
+// if role is patient then do some extra data validation
+    if(role==='patient' && (!dataToSend.appointment_date||!dataToSend.symptoms||!dataToSend.doctor)){
+      // console.log("patient role");
+     return false;
+    }
+
+    // if role is doctor then do some extra data validation
+    if(role==='doctor' && (!dataToSend.specialisation||!dataToSend.experience||!dataToSend.joining_date)){
+      // console.log("doctor role");
+    return false;
+    }
+
+    if(!dataToSend.name||!dataToSend.email||!dataToSend.phone||!dataToSend.address||!dataToSend.city||!dataToSend.state||!dataToSend.pincode){
+      // console.log("normal checking");
+      return false;
+    }
+    
+  
+    else{ 
+      // console.log("else part");
+      return true;
+    }
+  }
   validateLoginData(user){
      if(!user.password||!user.role){
       // console.log("user checking");
