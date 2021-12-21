@@ -71,7 +71,7 @@ validateUpdationDetails(dataToSend,role){
     //   return false;
     // }
   
-    else{ 
+    else if(password.newPassword===password.confirmNewPassword){ 
       // console.log("else part");
       return true;
     }
