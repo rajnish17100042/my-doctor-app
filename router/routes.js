@@ -299,6 +299,7 @@ router.patch(
     let statusFlag = {
       appointment: 0,
       visited: 0,
+      rejected: 0,
     };
 
     //allow only doctor to access this feature
@@ -314,6 +315,8 @@ router.patch(
         statusFlag.appointment = 1;
       } else if (status === "visited") {
         statusFlag.visited = 1;
+      } else if (status === "rejected") {
+        statusFlag.rejected = 1;
       }
       const tableName = "patient_registration";
       const sql = `update ${tableName} set ? where id=?`;

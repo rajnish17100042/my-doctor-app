@@ -14,6 +14,7 @@
                 <th>City</th>
                 <th>Symptoms</th>
                 <th>Appointment(YYYY-MM-DD)</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
 
@@ -26,6 +27,13 @@
                 <td>{{patient.city}} </td>
                 <td>{{patient.symptoms}} </td>
                 <td>{{patient.appointment_date}} </td>
+                <div *ngIf="patient.appointment;then thenBlock;else elseBlock"></div>
+                <ng-template #thenBlock>
+                    <td>Confirmed</td>
+                </ng-template>
+                <ng-template #elseBlock>
+                    <td>waiting</td>
+                </ng-template>
                 <td>
                     <button (click)="updateStatus('confirmed',patient.id)">Confirm </button>
                     <button (click)="updateStatus('rejected',patient.id)">Reject</button>
