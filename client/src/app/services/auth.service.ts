@@ -42,7 +42,13 @@ export class AuthService {
     headers.append( "credentials", "include");
     return this.http.get<any>('/'+route,{headers:headers,})
    }
-
+//doctor dashboard data 
+ getDoctorDashboardData(){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/doctorDashboard',{headers:headers,})
+   }
 
 //calling backend routes to display all the registration details of patient,doctor and admin on the admin dashboard
  getRegistrationDetails(){

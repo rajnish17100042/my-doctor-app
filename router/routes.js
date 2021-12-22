@@ -235,6 +235,22 @@ router.get("/adminDashboard", authenticate, (req, res) => {
   }
 });
 
+// route to get data for doctor dashboard
+router.get("/doctorDashboard", authenticate, (req, res) => {
+  // console.log("Hello");
+  // double checking
+  if (req.role !== "doctor") {
+    return res.json({
+      success: false,
+      message: "Page can't be rendered! Login First",
+    });
+  } else {
+    const doctorData = req.user;
+    // console.log(doctorData[0]);
+    return res.json({ success: true, doctorData: doctorData[0] });
+  }
+});
+
 // route to protect the registration page done by the admin
 router.get("/registrationRoute", authenticate, (req, res) => {
   // console.log("Hello");

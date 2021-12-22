@@ -1,0 +1,56 @@
+<div *ngIf="doctorData">
+    <div class="wrapper">
+        <!-- <div class="sidebar">
+            <ul>
+                <li>
+                    <img class="avatar" :src="`https://student-dbms-images.s3.amazonaws.com/${image}`" :alt="name" />
+                </li>
+
+                <li>
+                    <a><i class="fas fa-envelope"></i>email </a>
+                </li>
+                <li>
+                    <a><i class="fas fa-phone"></i> phone </a>
+                </li>
+            </ul>
+            <button @click="logout">Logout</button>      not working here 
+    </div> -->
+
+        <div class="main_content">
+            <div class="header">
+                Welcome <strong>{{doctorData.name}} </strong> !! Have a nice day.
+                <button (click)="logout()">Logout</button>
+                <button>
+                    <a [routerLink]="['/update-doctor-password/' + doctorData.id]"><i class="fas  fa-key"></i>
+                    </a>
+                </button>
+                <button>
+                    <a routerLink="/upload-image"><i class="fas fa-image">Upload Image</i></a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- details regarding registration   -->
+    <div class="info">
+        <table id="customers">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>specialisation</th>
+                <th>Experience</th>
+
+            </tr>
+
+
+            <tr *ngFor="let doctor of doctors">
+                <td>{{doctorData.name}} </td>
+                <td>{{doctorData.email}} </td>
+                <td>{{doctorData.phone}} </td>
+                <td>{{doctorData.specialisation}} </td>
+                <td>{{doctorData.experience}} </td>
+            </tr>
+        </table>
+    </div>
+</div>
