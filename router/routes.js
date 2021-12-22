@@ -262,10 +262,10 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
   } else if (req.role === "doctor") {
     console.log("current role and user is ");
     console.log(req.role);
-    console.log(req.user, req.user.name);
+    console.log(req.user[0], req.user[0].name);
     const tableName = "patient_registration";
     const sql = `select * from ${tableName} where doctor=?`;
-    db.query(sql, req.user.name, (err, result) => {
+    db.query(sql, req.user[0].name, (err, result) => {
       if (err) {
         console.log(err);
         return res.json({
