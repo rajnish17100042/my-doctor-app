@@ -6,6 +6,7 @@ import { AdminRegistrationComponent } from './components/admin/admin-registratio
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/doctor-dashboard.component';
 import { AppointmentDetailsComponent } from './components/doctor/appointment-details/appointment-details.component';
+import { VisitedPatientsComponent } from './components/doctor/visited-patients/visited-patients.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
 import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
 import { UpdatePatientComponent } from './components/admin/update-patient/update-patient.component';
@@ -45,6 +46,11 @@ const routes: Routes = [
   {
    path:'doctor/dashboard/appointment-details',
    component:AppointmentDetailsComponent,
+  },
+    // routing to get the details of all visited patients
+  {
+   path:'doctor/dashboard/visited-patients',
+   component:VisitedPatientsComponent,
   },
    // routing for the admin registration by super admin 
   {
@@ -98,4 +104,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorDashboardComponent,AppointmentDetailsComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]
+export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorDashboardComponent,AppointmentDetailsComponent,VisitedPatientsComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]

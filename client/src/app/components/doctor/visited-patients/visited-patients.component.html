@@ -1,0 +1,33 @@
+<div *ngIf="visitedPatients">
+
+
+    <!-- Appointment details   -->
+    <div class="header">
+        <h1>Visited Patients</h1>
+    </div>
+    <div class="info">
+        <table id="customers">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Symptoms</th>
+                <th>Visited(YYYY-MM-DD)</th>
+
+            </tr>
+
+
+
+            <tr *ngFor="let patient of visitedPatients">
+                <td>{{patient.name}} </td>
+                <td>{{patient.email}} </td>
+                <td>{{patient.phone}} </td>
+                <td>{{patient.city}} </td>
+                <td>{{patient.symptoms}} </td>
+                <td>{{patient.appointment_date}} </td>
+            </tr>
+
+        </table>
+    </div>
+</div>

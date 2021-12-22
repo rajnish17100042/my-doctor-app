@@ -66,6 +66,14 @@ updateAppointmentStatus(status,id){
     return this.http.patch<any>('/updateAppointmentStatus/'+status+'/'+id,{headers:headers,})
    }
 
+//getting all the patients who visited the Doctor
+getVisitedPatients(){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/visitedPatients',{headers:headers,})
+   }
+
 
 //calling backend routes to display all the registration details of patient,doctor and admin on the admin dashboard
  getRegistrationDetails(){

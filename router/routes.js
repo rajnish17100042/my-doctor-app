@@ -264,8 +264,8 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
     // console.log(req.role);
     // console.log(req.user[0], req.user[0].name);
     const tableName = "patient_registration";
-    const sql = `select * from ${tableName} where doctor=? order by appointment_date desc `;
-    db.query(sql, req.user[0].name, (err, result) => {
+    const sql = `select * from ${tableName} where doctor=? and appointment=? order by appointment_date desc `;
+    db.query(sql, [req.user[0].name, 0], (err, result) => {
       if (err) {
         console.log(err);
         return res.json({
@@ -341,6 +341,42 @@ router.patch(
   }
 );
 
+//route to get all the patients who visited to the Doctor
+router.get("/visitedPatients", authenticate, (req, res) => {
+  // only allow  doctor to access this data
+  if (req.role !== "doctor") {
+    return res.json({
+      success: false,
+      message: "you do not have the proper permission",
+    });
+  } else if (req.role === "doctor") {
+    // console.log("current role and user is ");
+    // console.log(req.role);
+    // console.log(req.user[0], req.user[0].name);
+    const tableName = "patient_registration";
+    const sql = `select * from ${tableName} where doctor=? and visited=? order by appointment_date desc `;
+    db.query(sql, [req.user[0].name, 1], (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.json({
+          success: false,
+          message: "some error occured!!",
+        });
+      } else if (!result) {
+        return res.json({
+          success: false,
+          message: "some error occured!!",
+        });
+      } else if (result) {
+        console.log(result);
+        return res.json({
+          success: true,
+          results: result,
+        });
+      }
+    });
+  }
+});
 // route to protect the registration page done by the admin
 router.get("/registrationRoute", authenticate, (req, res) => {
   // console.log("Hello");
