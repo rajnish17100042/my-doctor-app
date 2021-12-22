@@ -297,8 +297,8 @@ router.patch(
     const { status, id } = req.params;
     console.log(status, id);
     let statusFlag = {
-      appointment: false,
-      visited: false,
+      appointment: 0,
+      visited: 0,
     };
 
     //allow only doctor to access this feature
@@ -311,12 +311,13 @@ router.patch(
       //check the status and accordingly change the status flag
       console.log("status is : " + status);
       if (status === "confirmed") {
-        statusFlag.appointment = true;
+        statusFlag.appointment = 1;
       } else if (status === "visited") {
-        statusFlag.visited = true;
+        statusFlag.visited = 1;
       }
-      const sql = `update ? set ? where id=?`;
-      db.query(sql, ["patient_registration", statusFlag, id], (err, result) => {
+      const tableName = "patient_registration";
+      const sql = `update ${tableName} set ? where id=?`;
+      db.query(sql, [statusFlag, id], (err, result) => {
         if (err) {
           console.log(err);
           return res.json({
