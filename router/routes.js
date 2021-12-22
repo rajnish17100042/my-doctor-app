@@ -295,6 +295,7 @@ router.patch(
   (req, res) => {
     //get the status from sent in the request parameter
     const { status, id } = req.params;
+    console.log(status, id);
     let statusFlag = {
       appointment: 0,
       visited: 0,
@@ -328,6 +329,7 @@ router.patch(
             message: "Some error occured !!",
           });
         } else if (result) {
+          console.log(result);
           return res.json({
             success: true,
             message: "Appointment Status Updated Successfully !!",
