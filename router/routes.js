@@ -264,7 +264,7 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
     // console.log(req.role);
     // console.log(req.user[0], req.user[0].name);
     const tableName = "patient_registration";
-    const sql = `select * from ${tableName} where doctor=? and appointment=? order by appointment_date desc `;
+    const sql = `select * from ${tableName} where doctor=? and visited=? order by appointment_date desc `;
     db.query(sql, [req.user[0].name, 0], (err, result) => {
       if (err) {
         console.log(err);
