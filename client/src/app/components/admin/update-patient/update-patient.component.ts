@@ -46,7 +46,7 @@ export class UpdatePatientComponent implements OnInit {
        if(data.success){
           this.flashMessage.show("Displaying the updation details",{cssClass:'alert-success',timeout:3000});
           this.patient=data.result;
-          console.log(this.patient);
+          // console.log(this.patient);
        }
        else{
             this.flashMessage.show("Something went wrong",{cssClass:'alert-danger',timeout:3000});

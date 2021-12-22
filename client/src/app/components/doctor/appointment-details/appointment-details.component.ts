@@ -22,7 +22,7 @@ export class AppointmentDetailsComponent implements OnInit {
    ngOnInit(){
     this.authService.getAppointmentDetails().subscribe(data=>{
       if(data.success){
-        console.log(data);
+        // console.log(data);
         this.appointmentDetails=data.results;
         
        }else{

@@ -40,7 +40,7 @@ export class UpdateAdminComponent implements OnInit {
        if(data.success){
           this.flashMessage.show("Displaying the updation details",{cssClass:'alert-success',timeout:3000});
           this.admin=data.result;
-          console.log(this.admin);
+          // console.log(this.admin);
        }
        else{
             this.flashMessage.show("Something went wrong",{cssClass:'alert-danger',timeout:3000});

@@ -23,7 +23,7 @@ export class RegistrationDetailsComponent implements OnInit {
   ngOnInit(){
     this.authService.getRegistrationDetails().subscribe(data=>{
       if(data.success){
-        console.log(data);
+        // console.log(data);
         this.patients=data.results[0];
         this.doctors=data.results[1];
         this.admins=data.results[2];

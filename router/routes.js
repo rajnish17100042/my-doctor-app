@@ -260,9 +260,9 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
       message: "you do not have the proper permission",
     });
   } else if (req.role === "doctor") {
-    console.log("current role and user is ");
-    console.log(req.role);
-    console.log(req.user[0], req.user[0].name);
+    // console.log("current role and user is ");
+    // console.log(req.role);
+    // console.log(req.user[0], req.user[0].name);
     const tableName = "patient_registration";
     const sql = `select * from ${tableName} where doctor=? order by appointment_date desc `;
     db.query(sql, req.user[0].name, (err, result) => {
@@ -295,7 +295,7 @@ router.patch(
   (req, res) => {
     //get the status from sent in the request parameter
     const { status, id } = req.params;
-    console.log(status, id);
+    // console.log(status, id);
     let statusFlag = {
       appointment: 0,
       visited: 0,
@@ -309,7 +309,7 @@ router.patch(
       });
     } else if (req.role === "doctor") {
       //check the status and accordingly change the status flag
-      console.log("status is : " + status);
+      // console.log("status is : " + status);
       if (status === "confirmed") {
         statusFlag.appointment = 1;
       } else if (status === "visited") {
@@ -319,7 +319,7 @@ router.patch(
       const sql = `update ${tableName} set ? where id=?`;
       db.query(sql, [statusFlag, id], (err, result) => {
         if (err) {
-          console.log(err);
+          // console.log(err);
           return res.json({
             success: false,
             message: "Some error occured !!",
@@ -330,7 +330,7 @@ router.patch(
             message: "Some error occured !!",
           });
         } else if (result) {
-          console.log(result);
+          // console.log(result);
           return res.json({
             success: true,
             message: "Appointment Status Updated Successfully !!",
@@ -535,15 +535,15 @@ router.patch(
           // throw err
           return res.json({ success: false, message: "Some Error Occured!" });
         } else {
-          console.log(result);
+          // console.log(result);
           const dbpassword = result[0].password;
-          console.log(dbpassword);
+          // console.log(dbpassword);
           // now compare the current password and the password stored in database
           const passwordMatch = await bcrypt.compare(
             currentPassword,
             dbpassword
           );
-          console.log(passwordMatch);
+          // console.log(passwordMatch);
           if (!passwordMatch) {
             return res.json({ success: false, message: "Some Error Occured!" });
           } else {
@@ -594,7 +594,7 @@ router.delete("/deleteUser/:roleFromFrontend/:id", authenticate, (req, res) => {
   // get the role and id sent from the front-end
   const { roleFromFrontend, id } = req.params;
   // get the current role who is logged in
-  console.log(req.role);
+  // console.log(req.role);
   // delete feature is only available for admin
   if (req.role !== "admin") {
     return res.json({
@@ -604,12 +604,12 @@ router.delete("/deleteUser/:roleFromFrontend/:id", authenticate, (req, res) => {
   } else if (req.role === "admin") {
     // get the table name
     let tableName = getTableName(roleFromFrontend);
-    console.log("TableNAme is:");
-    console.log(tableName);
+    // console.log("TableNAme is:");
+    // console.log(tableName);
     const sql = `delete from ${tableName} where id=?`;
     db.query(sql, id, (err, result) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         return res.json({
           success: false,
           message: "Some error occured!!",
@@ -620,7 +620,7 @@ router.delete("/deleteUser/:roleFromFrontend/:id", authenticate, (req, res) => {
           message: "Some error occured!!",
         });
       } else if (result) {
-        console.log(result);
+        // console.log(result);
         return res.json({
           success: true,
           message: "User Successfully Deleted !!",

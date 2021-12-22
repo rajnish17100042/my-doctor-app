@@ -42,7 +42,7 @@ export class UpdateDoctorComponent implements OnInit {
        if(data.success){
           this.flashMessage.show("Displaying the updation details",{cssClass:'alert-success',timeout:3000});
           this.doctor=data.result;
-          console.log(this.doctor);
+          // console.log(this.doctor);
        }
        else{
             this.flashMessage.show("Something went wrong",{cssClass:'alert-danger',timeout:3000});

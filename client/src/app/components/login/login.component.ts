@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(){
     this.authService.checkAlreadyLogin().subscribe(data=>{
       if(data.success){
-        console.log(data);
+        // console.log(data);
         if(data.role==='admin'){
            this.router.navigate(['/admin/dashboard']);
         }else if(data.role==='doctor'){
