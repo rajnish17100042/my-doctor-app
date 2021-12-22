@@ -22,6 +22,7 @@ import { UpdateAdminComponent } from './components/admin/update-admin/update-adm
 import { UpdateDoctorPasswordComponent } from './components/admin/update-doctor-password/update-doctor-password.component';
 import { UpdateAdminPasswordComponent } from './components/admin/update-admin-password/update-admin-password.component';
 import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/doctor-dashboard.component';
+import { AppointmentDetailsComponent } from './components/doctor/appointment-details/appointment-details.component';
 
 
 
@@ -42,6 +43,7 @@ import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/d
     UpdateDoctorPasswordComponent,
     UpdateAdminPasswordComponent,
     DoctorDashboardComponent,
+    AppointmentDetailsComponent,
   ],
 
   imports: [

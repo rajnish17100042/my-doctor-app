@@ -251,6 +251,41 @@ router.get("/doctorDashboard", authenticate, (req, res) => {
   }
 });
 
+//route to get appointment details for doctor
+router.get("/appointmentDetails", authenticate, (req, res) => {
+  // only allow  doctor to access this data
+  if (req.role !== "doctor") {
+    return res.json({
+      success: false,
+      message: "you do not have the proper permission",
+    });
+  } else if (req.role === "patient") {
+    console.log(req.user.name);
+    const tableName = "patient_registration";
+    const sql = `select * from ${tableName} where doctor=?`;
+    db.query(sql, req.user.name, (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.json({
+          success: false,
+          message: "some error occured!!",
+        });
+      } else if (!result) {
+        return res.json({
+          success: false,
+          message: "some error occured!!",
+        });
+      } else if (result) {
+        console.log(result);
+        return res.json({
+          success: true,
+          results: result,
+        });
+      }
+    });
+  }
+});
+
 // route to protect the registration page done by the admin
 router.get("/registrationRoute", authenticate, (req, res) => {
   // console.log("Hello");

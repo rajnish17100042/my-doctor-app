@@ -1,0 +1,36 @@
+<div *ngIf="appointmentDetails">
+
+
+    <!-- Appointment details   -->
+    <div class="header">
+        <h1>Appointment Requests</h1>
+    </div>
+    <div class="info">
+        <table id="customers">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Symptoms</th>
+                <th>Action</th>
+            </tr>
+
+
+
+            <tr *ngFor="let patient of appointmentDetails">
+                <td>{{patient.name}} </td>
+                <td>{{patient.email}} </td>
+                <td>{{patient.phone}} </td>
+                <td>{{patient.city}} </td>
+                <td>{{patient.symptoms}} </td>
+                <td>
+                    <button>Confirm </button>
+                    <button>Reject</button>
+                </td>
+
+            </tr>
+
+        </table>
+    </div>
+</div>
