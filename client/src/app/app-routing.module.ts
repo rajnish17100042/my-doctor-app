@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/doctor-dashboard.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
 import { PatientRegistrationComponent } from './components/admin/patient-registration/patient-registration.component';
 import { UpdatePatientComponent } from './components/admin/update-patient/update-patient.component';
@@ -33,6 +34,11 @@ const routes: Routes = [
   {
    path:'admin/dashboard',
    component:AdminDashboardComponent,
+  },
+    // routing for the doctor dashboard 
+  {
+   path:'doctor/dashboard',
+   component:DoctorDashboardComponent,
   },
    // routing for the admin registration by super admin 
   {
@@ -86,4 +92,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]
+export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorDashboardComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]

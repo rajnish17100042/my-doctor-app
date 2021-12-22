@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
            this.router.navigate(['/admin/dashboard']);
         }else if(data.role==='doctor'){
           //this.router.navigate(['/doctor/dashboard']);    //working on doctor dashboard
-              this.router.navigate(['/login']);
+              this.router.navigate(['/doctor/dashboard']);
         }else if(data.role==='patient'){
           //this.router.navigate(['/patient/dashboard']);    //working on patient dashboard
           this.router.navigate(['/login']);
@@ -69,7 +69,9 @@ login(){
         if(data.role==='admin'){
         this.router.navigate(['/admin/dashboard']);
         }
-        else{
+        else if(data.role==='doctor'){
+         this.router.navigate(['/doctor/dashboard']);
+        }else if(data.role==='patient'){
          this.router.navigate(['/login']);
         }
         
