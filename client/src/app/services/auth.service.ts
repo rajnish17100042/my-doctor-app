@@ -57,6 +57,15 @@ export class AuthService {
     headers.append( "credentials", "include");
     return this.http.get<any>('/appointmentDetails',{headers:headers,})
    }
+ 
+//updating the appointment status marked by the Doctor
+updateAppointmentStatus(status,id){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.patch<any>('/updateAppointmentStatus/'+status+'/'+id,{headers:headers,})
+   }
+
 
 //calling backend routes to display all the registration details of patient,doctor and admin on the admin dashboard
  getRegistrationDetails(){

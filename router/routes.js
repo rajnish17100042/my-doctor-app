@@ -288,6 +288,56 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
   }
 });
 
+//route to update the status of appointment marked by the Doctor
+router.patch(
+  "/updateAppointmentStatus/:status/:id",
+  authenticate,
+  (req, res) => {
+    //get the status from sent in the request parameter
+    const { status, id } = req.params;
+    let statusFlag = {
+      appointment: 0,
+      visited: 0,
+    };
+
+    //allow only doctor to access this feature
+    if (req.role !== "doctor") {
+      return res.json({
+        success: false,
+        message: "you do not have the proper permission!!",
+      });
+    } else if (req.role === "doctor") {
+      //check the status and accordingly change the status flag
+      console.log("status is : " + status);
+      if (status === "confirmed") {
+        statusFlag.appointment = 1;
+      } else if (status === "visited") {
+        statusFlag.visited = 1;
+      }
+      const sql = `update ? set ? where id=?`;
+      db.query(sql, ["patient_registration", statusFlag, id], (err, result) => {
+        if (err) {
+          console.log(err);
+          return res.json({
+            success: false,
+            message: "Some error occured !!",
+          });
+        } else if (!result) {
+          return res.json({
+            success: false,
+            message: "Some error occured !!",
+          });
+        } else if (result) {
+          return res.json({
+            success: true,
+            message: "Appointment Status Updated Successfully !!",
+          });
+        }
+      });
+    }
+  }
+);
+
 // route to protect the registration page done by the admin
 router.get("/registrationRoute", authenticate, (req, res) => {
   // console.log("Hello");

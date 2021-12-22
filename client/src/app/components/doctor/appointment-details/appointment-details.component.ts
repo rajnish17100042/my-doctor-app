@@ -33,13 +33,13 @@ export class AppointmentDetailsComponent implements OnInit {
   }
 
 
-  confirmAppointment(role,id){
+  updateStatus(status,id){
    
-    let finaldelete = confirm("want to delete the user ??");
+    let finalConfirmation = confirm(`are you surly want to mark it to .... ${status}`);
 
-    if (finaldelete == true) {
+    if (finalConfirmation == true) {
         //  console.log(role,id);
-      this.authService.deleteUser(role,id).subscribe(
+      this.authService.updateAppointmentStatus(status,id).subscribe(
         data => {
         if(data.success){
             this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});

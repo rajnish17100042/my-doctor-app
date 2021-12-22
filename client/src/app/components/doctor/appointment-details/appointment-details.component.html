@@ -25,10 +25,11 @@
                 <td>{{patient.phone}} </td>
                 <td>{{patient.city}} </td>
                 <td>{{patient.symptoms}} </td>
-                <td>{{(patient.appointment_date).toString()}} </td>
+                <td>{{patient.appointment_date}} </td>
                 <td>
-                    <button>Confirm </button>
-                    <button>Reject</button>
+                    <button (click)="updateStatus('confirmed',patient.id)">Confirm </button>
+                    <button (click)="updateStatus('rejected',patient.id)">Reject</button>
+                    <button (click)="updateStatus('visited',patient.id)">Visited</button>
                 </td>
 
             </tr>
