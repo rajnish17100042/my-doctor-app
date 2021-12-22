@@ -85,7 +85,7 @@ export class PatientRegistrationComponent implements OnInit {
     this.authService.sendDataToServer(dataToSend,role).subscribe(
       data => {
        if(data.success){
-          this.flashMessage.show("Appointment Successful",{cssClass:'alert-success',timeout:3000});
+          this.flashMessage.show("Patient Registered Successful !!",{cssClass:'alert-success',timeout:3000});
           this.router.navigate(['/login']);
        }
        else{
