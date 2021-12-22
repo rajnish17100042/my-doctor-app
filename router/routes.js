@@ -260,6 +260,8 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
       message: "you do not have the proper permission",
     });
   } else if (req.role === "doctor") {
+    console.log("current role and user is ");
+    console.log(req.role);
     console.log(req.user, req.user.name);
     const tableName = "patient_registration";
     const sql = `select * from ${tableName} where doctor=?`;
