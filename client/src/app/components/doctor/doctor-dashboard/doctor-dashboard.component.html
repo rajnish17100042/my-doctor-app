@@ -21,7 +21,8 @@
                 Welcome <strong>{{doctorData.name}} </strong> !! Have a nice day.
                 <button (click)="logout()">Logout</button>
                 <button>
-                    <a [routerLink]="['/update-doctor-password/' + doctorData.id]"><i class="fas  fa-key"></i>
+                    <a [routerLink]="['/update-doctor-password/' + doctorData.id]"><i class="fas  fa-key">Update
+                            Password</i>
                     </a>
                 </button>
                 <button>
@@ -44,7 +45,7 @@
             </tr>
 
 
-            <tr *ngFor="let doctor of doctors">
+            <tr>
                 <td>{{doctorData.name}} </td>
                 <td>{{doctorData.email}} </td>
                 <td>{{doctorData.phone}} </td>
