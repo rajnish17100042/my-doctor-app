@@ -49,7 +49,13 @@ export class AuthService {
     headers.append( "credentials", "include");
     return this.http.get<any>('/doctorDashboard',{headers:headers,})
    }
-
+//patient dashboard data 
+ getPatientDashboardData(){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/patientDashboard',{headers:headers,})
+   }
 //getting the appointment details for a docto
  getAppointmentDetails(){
     let headers=new HttpHeaders();

@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/doctor-dashboard.component';
+import { PatientDashboardComponent } from './components/patient/patient-dashboard/patient-dashboard.component';
 import { AppointmentDetailsComponent } from './components/doctor/appointment-details/appointment-details.component';
 import { VisitedPatientsComponent } from './components/doctor/visited-patients/visited-patients.component';
 import { DoctorRegistrationComponent } from './components/admin/doctor-registration/doctor-registration.component';
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
    path:'doctor/dashboard',
    component:DoctorDashboardComponent,
+  },
+    // routing for the patient dashboard 
+  {
+   path:'patient/dashboard',
+   component:PatientDashboardComponent,
   },
     // routing for the appointment details shown to doctor
   {
@@ -104,4 +110,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents=[LoginComponent,HomeComponent,AdminRegistrationComponent,DoctorDashboardComponent,AppointmentDetailsComponent,VisitedPatientsComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]
+export const RoutingComponents=[LoginComponent,HomeComponent,AdminDashboardComponent,AdminRegistrationComponent,DoctorDashboardComponent,PatientDashboardComponent,AppointmentDetailsComponent,VisitedPatientsComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]

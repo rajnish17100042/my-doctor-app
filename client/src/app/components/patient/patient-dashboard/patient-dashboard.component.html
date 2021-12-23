@@ -1,0 +1,100 @@
+<div *ngIf="patientData">
+    <div class="wrapper">
+        <!-- <div class="sidebar">
+            <ul>
+                <li>
+                    <img class="avatar" :src="`https://student-dbms-images.s3.amazonaws.com/${image}`" :alt="name" />
+                </li>
+
+                <li>
+                    <a><i class="fas fa-envelope"></i>email </a>
+                </li>
+                <li>
+                    <a><i class="fas fa-phone"></i> phone </a>
+                </li>
+            </ul>
+            <button @click="logout">Logout</button>      not working here 
+    </div> -->
+
+        <div class="main_content">
+            <div class="header">
+                Welcome <strong>{{patientData.name}} </strong> !! Have a nice day.
+                <button (click)="logout()">Logout</button>
+                <!-- <button>
+                    <a [routerLink]="['/doctor/dashboard/appointment-details']">Check Appoinments
+                    </a>
+                </button> -->
+                <!-- <button>
+                    <a [routerLink]="['/doctor/dashboard/visited-patients']">Visited Patients
+                    </a>
+                </button> -->
+                <button>
+                    <a [routerLink]="['/update-patient-password/' + patientData.id]"><i class="fas  fa-key">Update
+                            Password</i>
+                    </a>
+                </button>
+                <button>
+                    <a routerLink="/upload-image"><i class="fas fa-image">Upload Image</i></a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- details regarding registration   -->
+    <div class="header">
+        <h1>Registration Details</h1>
+    </div>
+    <div class="info">
+        <table id="customers">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Symptoms </th>
+                <th>Doctor</th>
+                <th>Appointment(YYYY-MM-DD)</th>
+                <th>Status</th>
+                <th>Action</th>
+
+
+            </tr>
+
+
+            <tr>
+                <td>{{patientData.name}} </td>
+                <td>{{patientData.email}} </td>
+                <td>{{patientData.phone}} </td>
+                <td>{{patientData.symptoms} </td>
+                <td>{{patientData.doctor}} </td>
+                <td>{{patientData.appointment_date}} </td>
+                <!-- <ng-container *ngIf="patient.appointment;else second"></ng-container>
+                <ng-template #second>
+                    <ng-container *ngIf="foo === 2;else third"></ng-container>
+                </ng-template>
+                <ng-template #third></ng-template> -->
+                <!-- <div *ngIf="'patient.appointment ';then thenBlock;else elseBlock"></div>
+                <ng-template #thenBlock>
+                    <td>Confirmed</td>
+                </ng-template>
+                <ng-template #elseBlock>
+                    <td>waiting</td>
+                </ng-template> -->
+                <div [ngSwitch]="patientData">
+                    <div *ngSwitchCase="patientData.appointment && !patientData.visited && !patientData.rejected">
+                        <td>Confirmed</td>
+                    </div>
+                    <div *ngSwitchCase="patientData.appointment && patientData.visited && !patientData.rejected">
+                        <td>Visited</td>
+                    </div>
+                    <div *ngSwitchCase="!patientData.appointment && !patientData.visited && patientData.rejected">
+                        <td>Rejected</td>
+                    </div>
+                    <div *ngSwitchCase="!patientData.appointment && !patientData.visited && !patientData.rejected">
+                        <td>Waiting</td>
+                    </div>
+                </div>
+
+            </tr>
+        </table>
+    </div>
+</div>

@@ -251,6 +251,21 @@ router.get("/doctorDashboard", authenticate, (req, res) => {
   }
 });
 
+// route to get data for patient dashboard
+router.get("/patientDashboard", authenticate, (req, res) => {
+  // console.log("Hello");
+  // double checking
+  if (req.role !== "patient") {
+    return res.json({
+      success: false,
+      message: "Page can't be rendered! Login First",
+    });
+  } else {
+    const patientData = req.user;
+    // console.log(patientData[0]);
+    return res.json({ success: true, patientData: patientData[0] });
+  }
+});
 //route to get appointment details for doctor
 router.get("/appointmentDetails", authenticate, (req, res) => {
   // only allow  doctor to access this data
@@ -317,6 +332,8 @@ router.patch(
         statusFlag.visited = 1;
       } else if (status === "rejected") {
         statusFlag.rejected = 1;
+        statusFlag.appointment = 0;
+        statusFlag.visited = 0;
       }
       const tableName = "patient_registration";
       const sql = `update ${tableName} set ? where id=?`;
