@@ -83,6 +83,9 @@
                         </td>
                     </div>
                 </div>
+                <div *ngIf="patientData.rejected">
+                    <td><button (click)="bookAppointmentAgain()">Book Again</button></td>
+                </div>
 
                 <!-- <div *ngIf="'patient.appointment ';then thenBlock;else elseBlock"></div>
                 <ng-template #thenBlock>

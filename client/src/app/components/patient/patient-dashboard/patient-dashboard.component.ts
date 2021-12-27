@@ -38,6 +38,10 @@ export class PatientDashboardComponent implements OnInit {
   
   }
 
+    bookAppointmentAgain(){
+      console.log('Booking Again');
+    }
+
 
     logout(){
      //go to backend logout route
