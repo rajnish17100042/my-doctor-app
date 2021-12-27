@@ -84,7 +84,8 @@
                     </div>
                 </div>
 
-                <td *ngIf="patientData.rejected"><button (click)="bookAppointmentAgain()">Book Again</button></td>
+                <td *ngIf="patientData.rejected"><button (click)="bookAppointmentAgain(patientData.id)">Book
+                        Again</button></td>
 
 
                 <!-- <div *ngIf="'patient.appointment ';then thenBlock;else elseBlock"></div>

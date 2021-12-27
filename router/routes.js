@@ -363,6 +363,41 @@ router.patch(
   }
 );
 
+// route to book appointment again
+router.patch("/bookAppointmentAgain/:id", authenticate, (req, res) => {
+  // allow only patient role
+  if (req.role !== "patient") {
+    return res.json({
+      success: false,
+      message: "You do not have the permission!",
+    });
+  } else if (req.role === "patient") {
+    // get the id of the patient
+    const id = req.params.id;
+    const tableName = "patient_registration";
+    const sql = `update ${tableName} set rejected=? where id=?`;
+    db.query(sql, [0, id], (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.json({
+          success: false,
+          message: "Opps!! Something went wrong",
+        });
+      } else if (!result) {
+        return res.json({
+          success: false,
+          message: "Opps!! Something went wrong",
+        });
+      } else if (result) {
+        return res.json({
+          success: true,
+          message: "Appointment Request is send Successfully!!",
+        });
+      }
+    });
+  }
+});
+
 //route to get all the patients who visited to the Doctor
 router.get("/visitedPatients", authenticate, (req, res) => {
   // only allow  doctor to access this data

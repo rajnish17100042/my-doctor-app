@@ -38,8 +38,21 @@ export class PatientDashboardComponent implements OnInit {
   
   }
 
-    bookAppointmentAgain(){
-      console.log('Booking Again');
+    bookAppointmentAgain(id){
+      // console.log('Booking Again');
+      this.authService.bookAppointmentAgain(id).subscribe(
+      data => {
+       if(data.success){
+          this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
+          
+       }
+       else{
+            this.flashMessage.show("Something went wrong",{cssClass:'alert-danger',timeout:3000});
+
+       }
+      }
+      
+    );
     }
 
 

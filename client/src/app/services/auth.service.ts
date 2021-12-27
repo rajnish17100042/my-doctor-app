@@ -72,6 +72,15 @@ updateAppointmentStatus(status,id){
     return this.http.patch<any>('/updateAppointmentStatus/'+status+'/'+id,{headers:headers,})
    }
 
+//Book appointment again after doctor has rejected
+bookAppointmentAgain(id){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.patch<any>('/bookAppointmentAgain/'+id,{headers:headers,})
+   }
+
+
 //getting all the patients who visited the Doctor
 getVisitedPatients(){
     let headers=new HttpHeaders();
