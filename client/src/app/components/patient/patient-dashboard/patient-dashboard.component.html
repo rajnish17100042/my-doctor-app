@@ -67,25 +67,14 @@
                 <td>{{patientData.symptoms}} </td>
                 <td>{{patientData.doctor}} </td>
                 <td>{{patientData.appointment_date}} </td>
+                <div>
+                    <td *ngIf="patientData.appointment && !patientData.visited && !patientData.rejected">Confirmed</td>
+                    <td *ngIf="patientData.appointment && patientData.visited && !patientData.rejected">Visited</td>
+                    <td *ngIf=" !patientData.appointment && !patientData.visited && patientData.rejected">Waiting</td>
+                    <td *ngIf="!patientData.appointment && !patientData.visited && !patientData.rejected">Rejected
+                    </td>
+                </div>
 
-                <ng-container *ngIf="patientData.appointment && !patientData.visited && !patientData.rejected">
-                    <td>Confirmed</td>
-                </ng-container>
-                <ng-template>
-                    <ng-container *ngIf="patientData.appointment && patientData.visited && !patientData.rejected">
-                        <td>Visited</td>
-                    </ng-container>
-                </ng-template>
-                <ng-template>
-                    <ng-container *ngIf=" !patientData.appointment && !patientData.visited && patientData.rejected">
-                        <td>Waiting</td>
-                    </ng-container>
-                </ng-template>
-                <ng-template>
-                    <ng-container *ngIf="!patientData.appointment && !patientData.visited && !patientData.rejected">
-                        <td>Rejected</td>
-                    </ng-container>
-                </ng-template>
                 <!-- <div *ngIf="'patient.appointment ';then thenBlock;else elseBlock"></div>
                 <ng-template #thenBlock>
                     <td>Confirmed</td>
