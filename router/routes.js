@@ -378,7 +378,7 @@ router.patch("/bookAppointmentAgain/:id", authenticate, (req, res) => {
     const sql = `update ${tableName} set rejected=? where id=?`;
     db.query(sql, [0, id], (err, result) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         return res.json({
           success: false,
           message: "Opps!! Something went wrong",
@@ -414,7 +414,7 @@ router.get("/visitedPatients", authenticate, (req, res) => {
     const sql = `select * from ${tableName} where doctor=? and visited=? order by appointment_date desc `;
     db.query(sql, [req.user[0].name, 1], (err, result) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         return res.json({
           success: false,
           message: "some error occured!!",
@@ -425,7 +425,7 @@ router.get("/visitedPatients", authenticate, (req, res) => {
           message: "some error occured!!",
         });
       } else if (result) {
-        console.log(result);
+        // console.log(result);
         return res.json({
           success: true,
           results: result,

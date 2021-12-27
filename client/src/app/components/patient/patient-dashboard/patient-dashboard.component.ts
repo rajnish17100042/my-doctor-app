@@ -28,7 +28,7 @@ export class PatientDashboardComponent implements OnInit {
      this.authService.getPatientDashboardData().subscribe(data=>{
       if(data.success){
        
-        console.log(data.patientData);
+        // console.log(data.patientData);
         this.patientData=data.patientData;
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
