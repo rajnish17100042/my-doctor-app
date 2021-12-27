@@ -27,10 +27,8 @@ export class PatientDashboardComponent implements OnInit {
     
      this.authService.getPatientDashboardData().subscribe(data=>{
       if(data.success){
-        // console.log(data.token);
-        // this.flashMessage.show("Rendering the dashboard",{cssClass:'alert-success',timeout:3000});
-        // this.router.navigate(['/admin/dashboard']); by writing this will call infinite loop
-        // console.log(data.adminData);
+       
+        console.log(data.patientData);
         this.patientData=data.patientData;
       }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
