@@ -64,21 +64,37 @@
                 <td>{{patientData.name}} </td>
                 <td>{{patientData.email}} </td>
                 <td>{{patientData.phone}} </td>
-                <td>{{patientData.symptoms} </td>
+                <td>{{patientData.symptoms}} </td>
                 <td>{{patientData.doctor}} </td>
                 <td>{{patientData.appointment_date}} </td>
-                <!-- <ng-container *ngIf="patient.appointment;else second"></ng-container>
+                <ng-container
+                    *ngIf="patientData.appointment && !patientData.visited && !patientData.rejected;else second">
+                    <td>Confirmed</td>
+                </ng-container>
                 <ng-template #second>
-                    <ng-container *ngIf="foo === 2;else third"></ng-container>
+                    <ng-container
+                        *ngIf="patientData.appointment && patientData.visited && !patientData.rejected;else third">
+                        <td>Visited</td>
+                    </ng-container>
                 </ng-template>
-                <ng-template #third></ng-template> -->
+                <ng-template #third>
+                    <ng-container
+                        *ngIf="!patientData.appointment && !patientData.visited && patientData.rejected;else fourth">
+                        <td>Waiting</td>
+                    </ng-container>
+                </ng-template>
+                <ng-template #fourth>
+                    <ng-container *ngIf="!patientData.appointment && !patientData.visited && !patientData.rejected">
+                        <td>Rejected</td>
+                    </ng-container>
+                </ng-template>
                 <!-- <div *ngIf="'patient.appointment ';then thenBlock;else elseBlock"></div>
                 <ng-template #thenBlock>
                     <td>Confirmed</td>
                 </ng-template>
                 <ng-template #elseBlock>
                     <td>waiting</td>
-                </ng-template> -->
+                </ng-template>
                 <div [ngSwitch]="patientData">
                     <div *ngSwitchCase="patientData.appointment && !patientData.visited && !patientData.rejected">
                         <td>Confirmed</td>
@@ -92,7 +108,7 @@
                     <div *ngSwitchCase="!patientData.appointment && !patientData.visited && !patientData.rejected">
                         <td>Waiting</td>
                     </div>
-                </div>
+                </div> -->
 
             </tr>
         </table>
