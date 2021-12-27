@@ -67,23 +67,21 @@
                 <td>{{patientData.symptoms}} </td>
                 <td>{{patientData.doctor}} </td>
                 <td>{{patientData.appointment_date}} </td>
-                <ng-container
-                    *ngIf="patientData.appointment && !patientData.visited && !patientData.rejected;else second">
+
+                <ng-container *ngIf="patientData.appointment && !patientData.visited && !patientData.rejected">
                     <td>Confirmed</td>
                 </ng-container>
-                <ng-template #second>
-                    <ng-container
-                        *ngIf="patientData.appointment && patientData.visited && !patientData.rejected;else third">
+                <ng-template>
+                    <ng-container *ngIf="patientData.appointment && patientData.visited && !patientData.rejected">
                         <td>Visited</td>
                     </ng-container>
                 </ng-template>
-                <ng-template #third>
-                    <ng-container
-                        *ngIf="!patientData.appointment && !patientData.visited && patientData.rejected;else fourth">
+                <ng-template>
+                    <ng-container *ngIf=" !patientData.appointment && !patientData.visited && patientData.rejected">
                         <td>Waiting</td>
                     </ng-container>
                 </ng-template>
-                <ng-template #fourth>
+                <ng-template>
                     <ng-container *ngIf="!patientData.appointment && !patientData.visited && !patientData.rejected">
                         <td>Rejected</td>
                     </ng-container>
