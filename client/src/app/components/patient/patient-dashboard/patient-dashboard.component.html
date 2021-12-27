@@ -74,11 +74,11 @@
                     <div *ngIf="patientData.appointment && patientData.visited && !patientData.rejected">
                         <td>Visited</td>
                     </div>
-                    <div *ngIf=" !patientData.appointment && !patientData.visited && patientData.rejected">
+                    <div *ngIf=" !patientData.appointment && !patientData.visited && !patientData.rejected">
                         <td>Waiting
                         </td>
                     </div>
-                    <div *ngIf="!patientData.appointment && !patientData.visited && !patientData.rejected">
+                    <div *ngIf="!patientData.appointment && !patientData.visited && patientData.rejected">
                         <td>Rejected
                         </td>
                     </div>

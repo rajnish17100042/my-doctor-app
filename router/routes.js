@@ -329,6 +329,8 @@ router.patch(
       if (status === "confirmed") {
         statusFlag.appointment = 1;
       } else if (status === "visited") {
+        statusFlag.rejected = 0;
+        statusFlag.appointment = 1;
         statusFlag.visited = 1;
       } else if (status === "rejected") {
         statusFlag.rejected = 1;
