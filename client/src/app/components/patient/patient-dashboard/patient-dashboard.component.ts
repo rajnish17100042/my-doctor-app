@@ -38,9 +38,9 @@ export class PatientDashboardComponent implements OnInit {
   
   }
 
-    bookAppointmentAgain(id){
+    updateAppointmentStatus(status,id){
       // console.log('Booking Again');
-      this.authService.bookAppointmentAgain(id).subscribe(
+      this.authService.updateAppointmentStatus(status,id).subscribe(
       data => {
        if(data.success){
           this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});

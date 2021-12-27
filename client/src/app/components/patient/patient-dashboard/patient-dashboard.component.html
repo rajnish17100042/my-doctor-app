@@ -83,13 +83,19 @@
                         </td>
                     </div>
                 </div>
+                <div>
+                    <div *ngIf="patientData.rejected">
+                        <td> <button (click)="updateAppointmentStatus('book_again',patientData.id)">Book
+                                Appointment </button>
+                        </td>
+                    </div>
+                    <div *ngIf="(patientData.appointment && !patientData.visited && !patientData.rejected)">
+                        <td> <button (click)="updateAppointmentStatus('withdraw',patientData.id)">Withdraw
+                            </button>
+                        </td>
+                    </div>
 
-                <td
-                    *ngIf="patientData.rejected || (!patientData.appointment && !patientData.visited && !patientData.rejected)">
-                    <button (click)="bookAppointmentAgain(patientData.id)">Book
-                        Appointment</button>
-                </td>
-
+                </div>
 
                 <!-- <div *ngIf="'patient.appointment ';then thenBlock;else elseBlock"></div>
                 <ng-template #thenBlock>

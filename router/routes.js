@@ -318,12 +318,12 @@ router.patch(
     };
 
     //allow only doctor to access this feature
-    if (req.role !== "doctor") {
+    if (req.role !== "doctor" && req.role !== "patient") {
       return res.json({
         success: false,
         message: "you do not have the proper permission!!",
       });
-    } else if (req.role === "doctor") {
+    } else if (req.role === "doctor" || req.role === "patient") {
       //check the status and accordingly change the status flag
       // console.log("status is : " + status);
       if (status === "confirmed") {
@@ -336,7 +336,17 @@ router.patch(
         statusFlag.rejected = 1;
         statusFlag.appointment = 0;
         statusFlag.visited = 0;
+      } else if (status === "book_again" || status === "withdraw") {
+        statusFlag.rejected = 0;
+        statusFlag.appointment = 0;
+        statusFlag.visited = 0;
+      } else {
+        return res.json({
+          success: false,
+          message: "Some error occured !!",
+        });
       }
+
       const tableName = "patient_registration";
       const sql = `update ${tableName} set ? where id=?`;
       db.query(sql, [statusFlag, id], (err, result) => {
@@ -362,41 +372,6 @@ router.patch(
     }
   }
 );
-
-// route to book appointment again
-router.patch("/bookAppointmentAgain/:id", authenticate, (req, res) => {
-  // allow only patient role
-  if (req.role !== "patient") {
-    return res.json({
-      success: false,
-      message: "You do not have the permission!",
-    });
-  } else if (req.role === "patient") {
-    // get the id of the patient
-    const id = req.params.id;
-    const tableName = "patient_registration";
-    const sql = `update ${tableName} set rejected=? where id=?`;
-    db.query(sql, [0, id], (err, result) => {
-      if (err) {
-        // console.log(err);
-        return res.json({
-          success: false,
-          message: "Opps!! Something went wrong",
-        });
-      } else if (!result) {
-        return res.json({
-          success: false,
-          message: "Opps!! Something went wrong",
-        });
-      } else if (result) {
-        return res.json({
-          success: true,
-          message: "Appointment Request is send Successfully!!",
-        });
-      }
-    });
-  }
-});
 
 //route to get all the patients who visited to the Doctor
 router.get("/visitedPatients", authenticate, (req, res) => {
