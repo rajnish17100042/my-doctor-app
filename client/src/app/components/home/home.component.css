@@ -42,14 +42,14 @@ p{
 
 
 /* css for home section */
-#home .bg-image{
+/* #home .bg-image{
   
-    background:url(../../images/intro-bg.jpg) no-repeat;
+    background:url(./images/homeimg4.png) no-repeat;
     background-size: cover;
     background-position: 50% 50%;
     height:120vh;
     
-}
+} */
 .home-content{
     position:absolute;
     top:35%;
@@ -63,10 +63,10 @@ p{
     font-weight: 600;
     
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: .5em;
 }
 .home-content p {
-    color: rgba(1, 6, 8, 0.651);
+    color: rgb(195 78 78);
     font-size: 25px;
     font-weight:200;
     margin-top: 0px;
@@ -105,9 +105,9 @@ p{
     border-radius:20px;
 }
 .about-image .bg-image{
-    background:url(../../images/about.jpg) no-repeat;
+    background:url(./images/aboutimg2.jpg) no-repeat;
     background-size: cover;
-    background-position: 50% 50%;
+    /* background-position: 50% 50%; */
     height:54vh;
     
 }
