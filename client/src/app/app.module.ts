@@ -25,6 +25,7 @@ import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/d
 import { AppointmentDetailsComponent } from './components/doctor/appointment-details/appointment-details.component';
 import { VisitedPatientsComponent } from './components/doctor/visited-patients/visited-patients.component';
 import { PatientDashboardComponent } from './components/patient/patient-dashboard/patient-dashboard.component';
+import { PatientAppointmentComponent } from './components/patient-appointment/patient-appointment.component';
 
 
 
@@ -48,6 +49,7 @@ import { PatientDashboardComponent } from './components/patient/patient-dashboar
     AppointmentDetailsComponent,
     VisitedPatientsComponent,
     PatientDashboardComponent,
+    PatientAppointmentComponent,
   ],
 
   imports: [

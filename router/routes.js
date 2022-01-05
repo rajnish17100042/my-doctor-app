@@ -33,9 +33,7 @@ router.post("/registration/:role", authenticate, (req, res) => {
 
     // console.log(isInputValidated);
     if (!isInputValidated) {
-      res
-        .status(400)
-        .json({ success: false, message: "Please fill the data properly" });
+      res.json({ success: false, message: "Please fill the data properly" });
     } else {
       //proceed forward after the  input validation
       // first based on the role get table name
@@ -57,15 +55,16 @@ router.post("/registration/:role", authenticate, (req, res) => {
           // console.log(result, result.length);
           if (result.length > 0) {
             // console.log("helo hello hello");
-            return res
-              .status(400)
-              .json({ success: false, message: "user is already registered" });
+            return res.json({
+              success: false,
+              message: "user is already registered",
+            });
           } else {
             // password hashing using bcrypt
             bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
               if (err) {
                 // throw err;
-                return res.status(400).json({
+                return res.json({
                   success: false,
                   message: "Some error occured please registered again",
                 });
@@ -80,14 +79,14 @@ router.post("/registration/:role", authenticate, (req, res) => {
               db.query(sql, req.body, (err, result) => {
                 if (err) {
                   //   throw err;
-                  return res.status(400).json({
+                  return res.json({
                     success: false,
                     message: "Some error occured please registered again",
                   });
                 }
                 // console.log(result);
 
-                return res.status(200).json({
+                return res.json({
                   success: true,
                   message: "User registedred Successfully",
                 });
@@ -303,6 +302,80 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
   }
 });
 
+//route to store appointment request data
+router.post("/bookAppointment", (req, res) => {
+  // console.log(req.body);
+  req.roleFromFrontend = "patient";
+
+  // calling function for input validation
+  const isInputValidated = validateInput(req);
+
+  // console.log(isInputValidated);
+  if (!isInputValidated) {
+    res.json({ success: false, message: "Please fill the data properly" });
+  } else {
+    //proceed forward after the  input validation
+
+    const tableName = "appointment_request";
+    // console.log(tableName);
+
+    // before request check if user  already has made a request
+    db.query(
+      `select email from ${tableName} where email=?`,
+      req.body.email,
+      (err, result) => {
+        if (err) {
+          // throw err;
+          return res.json({
+            success: false,
+            message: "Some error occured please registered again",
+          });
+        }
+        // console.log(result, result.length);
+        if (result.length > 0) {
+          // console.log("helo hello hello");
+          return res.json({
+            success: false,
+            message: "Appointment request already sent",
+          });
+        } else {
+          // password hashing using bcrypt
+          bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+            if (err) {
+              // throw err;
+              return res.json({
+                success: false,
+                message: "Some error occured please registered again",
+              });
+            }
+            req.body.password = hash;
+            // console.log(req.body.password);
+            let sql = `insert into ${tableName} set ?`;
+            // delete cpassword property from req.body object
+            delete req.body.cpassword;
+            // console.log(req.body);
+            // insert the data to database
+            db.query(sql, req.body, (err, result) => {
+              if (err) {
+                //   throw err;
+                return res.json({
+                  success: false,
+                  message: "Some error occured please registered again",
+                });
+              }
+              // console.log(result);
+
+              return res.json({
+                success: true,
+                message: "Appointment request is successful",
+              });
+            });
+          });
+        }
+      }
+    );
+  }
+});
 //route to update the status of appointment marked by the Doctor
 router.patch(
   "/updateAppointmentStatus/:status/:id",
@@ -481,6 +554,29 @@ router.get("/registrationDetails", authenticate, (req, res) => {
       return res.json({ success: true, results });
     });
   }
+});
+
+//route to get list of all Doctors
+router.get("/getDoctorsList", (req, res) => {
+  const tableName = "doctor_registration";
+  const sql = `select name,email from ${tableName}`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      // console.log(err);
+      return res.json({
+        success: false,
+        message: "Opps!! something went wrong",
+      });
+    } else if (!result) {
+      return res.json({
+        success: false,
+        message: "Opps!! something went wrong",
+      });
+    } else if (result) {
+      // console.log(result);
+      return res.json({ success: true, doctorsList: result });
+    }
+  });
 });
 
 //route to get the details doctor, patient, admin to display on th eupdation page

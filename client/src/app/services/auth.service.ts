@@ -49,6 +49,14 @@ export class AuthService {
     headers.append( "credentials", "include");
     return this.http.get<any>('/doctorDashboard',{headers:headers,})
    }
+
+//get list of all doctors 
+ getDoctorsList(){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/getDoctorsList',{headers:headers,})
+   }
 //patient dashboard data 
  getPatientDashboardData(){
     let headers=new HttpHeaders();
@@ -64,6 +72,15 @@ export class AuthService {
     return this.http.get<any>('/appointmentDetails',{headers:headers,})
    }
  
+//book appointment with doctor
+  bookAppointment(dataToSend){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    return this.http.post<any>('/bookAppointment',dataToSend,{headers:headers})
+
+}
+
+
 //updating the appointment status marked by the Doctor and changed by the patient(withdraw and book again)
 updateAppointmentStatus(status,id){
     let headers=new HttpHeaders();

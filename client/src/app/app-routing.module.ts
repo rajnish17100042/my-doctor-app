@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { PatientAppointmentComponent } from './components/patient-appointment/patient-appointment.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/doctor-dashboard.component';
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
    path: '',
    component: HomeComponent
+  },
+   // routing for the appointment booking
+  {
+   path:'book-appointment',
+   component:PatientAppointmentComponent,
   },
    // routing for the admin dashboard 
   {
@@ -110,4 +116,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents=[LoginComponent,HomeComponent,AdminDashboardComponent,AdminRegistrationComponent,DoctorDashboardComponent,PatientDashboardComponent,AppointmentDetailsComponent,VisitedPatientsComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]
+export const RoutingComponents=[LoginComponent,HomeComponent,PatientAppointmentComponent,AdminDashboardComponent,AdminRegistrationComponent,DoctorDashboardComponent,PatientDashboardComponent,AppointmentDetailsComponent,VisitedPatientsComponent,DoctorRegistrationComponent,PatientRegistrationComponent,UpdatePatientComponent,UpdateDoctorComponent,UpdateAdminComponent,UpdatePatientPasswordComponent,UpdateDoctorPasswordComponent,UpdateAdminPasswordComponent]
