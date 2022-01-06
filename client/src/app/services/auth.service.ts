@@ -64,20 +64,28 @@ export class AuthService {
     headers.append( "credentials", "include");
     return this.http.get<any>('/patientDashboard',{headers:headers,})
    }
-//getting the appointment details for a docto
+//getting the appointment details for a doctor
  getAppointmentDetails(){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
     headers.append( "credentials", "include");
     return this.http.get<any>('/appointmentDetails',{headers:headers,})
-   }
+}
  
 //book appointment with doctor
-  bookAppointment(dataToSend){
+ bookAppointment(dataToSend){
     let headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
     return this.http.post<any>('/bookAppointment',dataToSend,{headers:headers})
 
+}
+
+//get details of appointment request and display on the admin dashboard 
+ getAppointmentRequests(){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.get<any>('/appointmentRequests',{headers:headers,})
 }
 
 

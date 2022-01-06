@@ -1,6 +1,6 @@
 <div *ngIf="adminData">
-    <div class="wrapper">
-        <!-- <div class="sidebar">
+  <div class="wrapper">
+    <!-- <div class="sidebar">
             <ul>
                 <li>
                     <img class="avatar" :src="`https://student-dbms-images.s3.amazonaws.com/${image}`" :alt="name" />
@@ -16,32 +16,34 @@
             <button @click="logout">Logout</button>      not working here 
     </div> -->
 
-        <div class="main_content">
-            <div class="header">
-                Welcome <strong>{{adminData.name}} </strong> !! Have a nice day.
-                <button (click)="logout()">Logout</button>
-                <button>
-                    <a routerLink="/admin/patient-registration">Register Patient</a>
-                </button>
-                <button>
-                    <a routerLink="/admin/doctor-registration">Register Doctor</a>
-                </button>
-                <button>
-                    <a routerLink="/admin/admin-registration">Register Admin</a>
-                </button>
-                <button>
-                    <a routerLink="/notice-board">Issue a Notice</a>
-                </button>
-                <button>
-                    <a routerLink="/admin/job-application">Job Application</a>
-                </button>
-                <button>
-                    <a routerLink="/upload-image"><i class="fas fa-image">Upload Image</i></a>
-                </button>
-            </div>
-        </div>
+    <div class="main_content">
+      <div class="header">
+        Welcome <strong>{{ adminData.name }} </strong> !! Have a nice day.
+        <button (click)="logout()">Logout</button>
+        <button>
+          <a routerLink="/admin/patient-registration">Register Patient</a>
+        </button>
+        <button>
+          <a routerLink="/admin/doctor-registration">Register Doctor</a>
+        </button>
+        <button>
+          <a routerLink="/admin/admin-registration">Register Admin</a>
+        </button>
+        <button>
+          <a routerLink="/admin/appointment-request">Appointment Request</a>
+        </button>
+        <button>
+          <a routerLink="/admin/job-application">Job Application</a>
+        </button>
+        <button>
+          <a routerLink="/upload-image"
+            ><i class="fas fa-image">Upload Image</i></a
+          >
+        </button>
+      </div>
     </div>
+  </div>
 
-    <!-- details regarding registration   -->
-    <app-registration-details></app-registration-details>
+  <!-- details regarding registration   -->
+  <app-registration-details></app-registration-details>
 </div>

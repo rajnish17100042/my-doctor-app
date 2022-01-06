@@ -5,13 +5,12 @@ import {Router} from '@angular/router';
 import {FlashMessagesService} from 'flash-messages-angular';
 
 @Component({
-  selector: 'app-appointment-details',
-  templateUrl: './appointment-details.component.html',
-  styleUrls: ['./appointment-details.component.css']
+  selector: 'app-appointment-request',
+  templateUrl: './appointment-request.component.html',
+  styleUrls: ['./appointment-request.component.css']
 })
-export class AppointmentDetailsComponent implements OnInit {
-  appointmentDetails:Object;
-  
+export class AppointmentRequestComponent implements OnInit {
+  appointmentRequests:Object;
   constructor(
     private validateService:ValidateService,
     private flashMessage:FlashMessagesService,
@@ -19,11 +18,11 @@ export class AppointmentDetailsComponent implements OnInit {
     private router:Router,
     ) { }
 
-   ngOnInit(){
-    this.authService.getAppointmentDetails().subscribe(data=>{
+ ngOnInit(){
+    this.authService.getAppointmentRequests().subscribe(data=>{
       if(data.success){
         // console.log(data);
-        this.appointmentDetails=data.results;
+        this.appointmentRequests=data.results;
         
        }else{
         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
@@ -32,26 +31,25 @@ export class AppointmentDetailsComponent implements OnInit {
     }); 
   }
 
-
-  updateStatus(status,id){
+    handleAppointmentRequest(status,id){
    
     let finalConfirmation = confirm(`are you surly want to mark it to .... ${status} ?`);
 
     if (finalConfirmation == true) {
-        //  console.log(role,id);
-      this.authService.updateAppointmentStatus(status,id).subscribe(
-        data => {
-        if(data.success){
-            this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
+         console.log("Sending Request to the server"); 
+      // this.authService.handleAppointmentRequests(status,id).subscribe(
+      //   data => {
+      //   if(data.success){
+      //       this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
           
-        }
-        else{
-              this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
+      //   }
+      //   else{
+      //         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
 
-        }
-        }
+      //   }
+      //   }
       
-      );
+      // );
     } 
       
   }

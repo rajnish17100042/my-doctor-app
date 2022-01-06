@@ -281,7 +281,7 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
     const sql = `select * from ${tableName} where doctor=? and visited=? and rejected=? order by appointment_date desc `;
     db.query(sql, [req.user[0].name, 0, 0], (err, result) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         return res.json({
           success: false,
           message: "some error occured!!",
@@ -292,7 +292,7 @@ router.get("/appointmentDetails", authenticate, (req, res) => {
           message: "some error occured!!",
         });
       } else if (result) {
-        console.log(result);
+        // console.log(result);
         return res.json({
           success: true,
           results: result,
@@ -374,6 +374,43 @@ router.post("/bookAppointment", (req, res) => {
         }
       }
     );
+  }
+});
+
+//route to get the appointment request to display on admin dashboard
+router.get("/appointmentRequests", authenticate, (req, res) => {
+  // only allow  admin to access this data
+  if (req.role !== "admin") {
+    return res.json({
+      success: false,
+      message: "you do not have the proper permission",
+    });
+  } else if (req.role === "admin") {
+    // console.log("current role and user is ");
+    // console.log(req.role);
+    // console.log(req.user[0], req.user[0].name);
+    const tableName = "appointment_request";
+    const sql = `select * from ${tableName} order by appointment_date asc `;
+    db.query(sql, (err, result) => {
+      if (err) {
+        // console.log(err);
+        return res.json({
+          success: false,
+          message: "some error occured!!",
+        });
+      } else if (!result) {
+        return res.json({
+          success: false,
+          message: "some error occured!!",
+        });
+      } else if (result) {
+        // console.log(result);
+        return res.json({
+          success: true,
+          results: result,
+        });
+      }
+    });
   }
 });
 //route to update the status of appointment marked by the Doctor
