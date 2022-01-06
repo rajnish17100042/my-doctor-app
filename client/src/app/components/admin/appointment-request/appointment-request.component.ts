@@ -33,23 +33,23 @@ export class AppointmentRequestComponent implements OnInit {
 
     handleAppointmentRequest(status,id){
    
-    let finalConfirmation = confirm(`are you surly want to mark it to .... ${status} ?`);
+    let finalConfirmation = confirm(`are you surly want to .... ${status}....the request ?`);
 
     if (finalConfirmation == true) {
          console.log("Sending Request to the server"); 
-      // this.authService.handleAppointmentRequests(status,id).subscribe(
-      //   data => {
-      //   if(data.success){
-      //       this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
+      this.authService.handleAppointmentRequests(status,id).subscribe(
+        data => {
+        if(data.success){
+            this.flashMessage.show(data.message,{cssClass:'alert-success',timeout:3000});
           
-      //   }
-      //   else{
-      //         this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
+        }
+        else{
+              this.flashMessage.show(data.message,{cssClass:'alert-danger',timeout:3000});
 
-      //   }
-      //   }
+        }
+        }
       
-      // );
+      );
     } 
       
   }

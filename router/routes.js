@@ -413,6 +413,53 @@ router.get("/appointmentRequests", authenticate, (req, res) => {
     });
   }
 });
+
+//route to handle the appointment request  ...will be done by admin only
+router.patch(
+  "/handleAppointmentRequest/:status/:id",
+  authenticate,
+  (req, res) => {
+    console.log(req.params);
+    const { status, id } = req.params;
+
+    //allow only admin to access this route
+    if (req.role !== "admin") {
+      return res.json({
+        success: false,
+        message: "Sorry! You do not have the proper perrmission",
+      });
+    } else if (req.role === "admin") {
+      //based on the status make changes to the database
+      if (status === "reject") {
+        const tableName = "appointment_request";
+        //delete the entry from the appointment_request table
+        const sql = `DELETE FROM ${tableName} WHERE id=?`;
+        db.query(sql, id, (err, result) => {
+          if (err || !result) {
+            return res.json({
+              success: false,
+              message: "Opps!! Something went wrong",
+            });
+          } else if (result) {
+            return res.json({
+              success: true,
+              message: "Appointment Request Rejected Successfully",
+            });
+          }
+        });
+      } else if (status === "approve") {
+        //first get the data from the appointment_request table and check in the patient_registration if user is already present ... if not then add
+        // const tableName = "appointment_request";
+        // const sql = `SELECT * FROM ${tableName} WHERE id=?`;
+        return res.json({
+          success: false,
+          message: "Work in Progress",
+        });
+      }
+    }
+  }
+);
+
 //route to update the status of appointment marked by the Doctor
 router.patch(
   "/updateAppointmentStatus/:status/:id",

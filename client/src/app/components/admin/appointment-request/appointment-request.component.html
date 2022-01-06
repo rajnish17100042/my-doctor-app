@@ -23,8 +23,8 @@
         <td>{{ patient.symptoms }}</td>
         <td>{{ patient.appointment_date }}</td>
         <td>
-          <button (click)="handleAppointmentRequest('cancel', patient.id)">
-            Cancel
+          <button (click)="handleAppointmentRequest('reject', patient.id)">
+            Reject
           </button>
           <button (click)="handleAppointmentRequest('approve', patient.id)">
             Approve

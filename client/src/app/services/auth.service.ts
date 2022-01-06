@@ -97,7 +97,13 @@ updateAppointmentStatus(status,id){
     return this.http.patch<any>('/updateAppointmentStatus/'+status+'/'+id,{headers:headers,})
    }
 
-
+//approving or rejecting the appointment request ... it will be done by admin only
+handleAppointmentRequests(status,id){
+    let headers=new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    headers.append( "credentials", "include");
+    return this.http.patch<any>('/handleAppointmentRequest/'+status+'/'+id,{headers:headers,})
+   }
 
 
 //getting all the patients who visited the Doctor
